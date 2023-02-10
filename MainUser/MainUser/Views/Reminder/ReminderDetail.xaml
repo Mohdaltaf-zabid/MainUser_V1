@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.Reminder.ReminderDetail">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Reminder Info"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Large" />
+            <Label x:Name="LabelTitle"
+                   FontSize="Medium" />
+            <Label x:Name="LabelNotes"
+                   FontSize="Medium" />
+            <Label x:Name="LabelPriority"
+                   FontSize="Medium" />
+            <Label x:Name="LabelRepeat"
+                   FontSize="Medium" />
+            <Label x:Name="LabelSetDate"
+                   FontSize="Medium" />
+            <Label x:Name="LabelSetTime"
+                   FontSize="Medium" />
+            <Label x:Name="LabelID"
+                   FontSize="Medium" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

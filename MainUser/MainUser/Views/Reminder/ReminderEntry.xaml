@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.Reminder.ReminderEntry">
+    <ContentPage.Content>
+        <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+            <Label Text="Reminder Entry"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="TxtTitle"
+                   Placeholder="Title" />
+            <Entry x:Name="TxtNotes"
+                   Placeholder="Notes" />
+            <Entry x:Name="TxtPriority"
+                   Placeholder="Priority" />
+            <Entry x:Name="TxtRepeat"
+                   Placeholder="Repeat" />
+            <Entry x:Name="TxtSetdate"
+                   Placeholder="SetDate" />
+            <Entry x:Name="TxtSetTime"
+                   Placeholder="Set Time" />
+
+            <Button Text="Save"
+                    x:Name="ButtonSave"
+                    CornerRadius="15"
+                    Clicked="ButtonSave_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
