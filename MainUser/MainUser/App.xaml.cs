@@ -1,4 +1,5 @@
-﻿using MainUser.Views.Reminder;
+﻿using MainUser.Views;
+using MainUser.Views.Reminder;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace MainUser
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ReminderListPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.RegisterUser">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <Label Text="Register new user"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Large" />
+            <Entry Placeholder="FullName"
+                   x:Name="TxtFullName">
+            </Entry>
+            <Entry Placeholder="Email"
+                   x:Name="TxtEmail">
+            </Entry>
+            <Entry Placeholder="Gender"
+                   x:Name="TxtGender">
+            </Entry>
+            <Entry Placeholder="Birth Date"
+                   x:Name="TxtBirthDate">
+            </Entry>
+            <Entry Placeholder="Password"
+                   x:Name="TxtPassword"
+                   IsPassword="True">
+            </Entry>
+            <Button Text="Register"
+                    x:Name="ButtonRegister"
+                    Clicked="ButtonRegister_Clicked"
+                    CornerRadius="15">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
