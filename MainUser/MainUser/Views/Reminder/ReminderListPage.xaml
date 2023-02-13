@@ -3,50 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MainUser.Views.Reminder.ReminderListPage"
              Title="Reminder List">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0">
-            <ListView x:Name="ReminderListView"
-                      ItemsSource="{Binding reminder}"
-                      HasUnevenRows="True"
-                      IsRefreshing="True"
-                      IsPullToRefreshEnabled="True">
-                      <!--ItemTapped="ReminderListView_ItemTapped"-->
-                      
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem x:Name="DeleteSwipeItem"
-                                                   CommandParameter="{Binding ID}"
-                                                   Invoked="DeleteSwipeItem_Invoked"
-                                                   BackgroundColor="Red"
-                                                   IconImageSource="delete_icon.png"></SwipeItem>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
+    <StackLayout Padding="15"
+                 VerticalOptions="Start">
+        <StackLayout HorizontalOptions="StartAndExpand">
+            <Label Text="Today"
+                   FontSize ="Title"
+                   TextColor="#3478E8"/>
+        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <ListView x:Name="ReminderListView"
+                          ItemsSource="{Binding reminder}"
+                          HasUnevenRows="True"
+                          IsRefreshing="True"
+                          IsPullToRefreshEnabled="True">
+                    <!--ItemTapped="ReminderListView_ItemTapped"-->
 
-                                <StackLayout Orientation="Horizontal"
-                                             Padding="15">
-                                    <StackLayout HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding title}"
-                                               FontSize="Large" />
-                                    </StackLayout>
-                                    <StackLayout VerticalOptions="Center"
-                                                 HorizontalOptions="EndAndExpand"></StackLayout>
-                                    <Image Source="info_icon.png"
-                                           HeightRequest="30"
-                                           WidthRequest="30">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="EditTap"
-                                                                  Tapped="EditTap_Tapped"
-                                                                  CommandParameter="{Binding ID}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <!--<Image  Source="delete_icon.png"
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem x:Name="DeleteSwipeItem"
+                                                       CommandParameter="{Binding ID}"
+                                                       Invoked="DeleteSwipeItem_Invoked"
+                                                       BackgroundColor="Red"
+                                                       IconImageSource="delete_icon.png"></SwipeItem>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+
+                                    <StackLayout Orientation="Horizontal"
+                                                 Padding="15">
+                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                            <Label Text="{Binding title}"
+                                                   FontSize="Large" />
+                                            <Label Text="{Binding priority, StringFormat='Priority:{0} '}"
+                                                   FontSize="Medium" />
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center"
+                                                     HorizontalOptions="EndAndExpand"></StackLayout>
+                                        <Image Source="info_icon.png"
+                                               HeightRequest="30"
+                                               WidthRequest="30">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="EditTap"
+                                                                      Tapped="EditTap_Tapped"
+                                                                      CommandParameter="{Binding ID}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <!--<Image  Source="delete_icon.png"
                                             HeightRequest="30"
                                             WidthRequest="30">
 
@@ -56,22 +65,23 @@
                                                                   CommandParameter="{Binding ID}" />
                                         </Image.GestureRecognizers>
                                     </Image>-->
-                                </StackLayout>
-                            </SwipeView>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+                                    </StackLayout>
+                                </SwipeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
 
-        <ImageButton x:Name="AddReminderButton"
-                     Grid.Row="0"
-                     Source="PlusIcon.png"
-                     BorderWidth="1"
-                     BackgroundColor="Transparent"
-                     HorizontalOptions="End"
-                     Margin="0,0,20,22"
-                     VerticalOptions="End"
-                     Clicked="AddReminderButton_Clicked" />
-    </Grid>
+            <ImageButton x:Name="AddReminderButton"
+                         Grid.Row="0"
+                         Source="PlusIcon.png"
+                         BorderWidth="1"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="End"
+                         Margin="0,0,20,22"
+                         VerticalOptions="End"
+                         Clicked="AddReminderButton_Clicked" />
+        </Grid>
+    </StackLayout>
 </ContentPage>

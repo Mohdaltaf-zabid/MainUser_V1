@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MainUser
 {
@@ -26,6 +27,7 @@ namespace MainUser
 
         public async Task<List<ReminderModel>> GetAll()
         {
+            var UserEmail = Preferences.Get("userEmail", "");
             return (await firebaseClient.Child(nameof(ReminderModel)).OnceAsync<ReminderModel>()).Select(item => new ReminderModel
             {
                 title = item.Object.title,
@@ -34,8 +36,9 @@ namespace MainUser
                 repeat = item.Object.repeat,
                 setDate = item.Object.setDate,
                 setTime = item.Object.setTime,
+                email = item.Object.email,
                 ID = item.Key
-            }).ToList();
+            }).Where(a => a.email == UserEmail).ToList();
         }
 
         public async Task<ReminderModel> GetById(string id)

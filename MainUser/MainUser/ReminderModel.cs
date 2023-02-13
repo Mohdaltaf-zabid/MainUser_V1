@@ -13,5 +13,6 @@ namespace MainUser
         public string repeat { get; set; }
         public string setDate { get; set; }
         public string setTime { get; set; }
+        public string email { get; set; }
     }
 }

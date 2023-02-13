@@ -41,7 +41,7 @@
                                               Tapped="RegisterTap_Tapped"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Forget"
+                <Label Text="Forget Password"
                        Grid.Row="0"
                        Grid.Column="1"
                        TextColor="Blue"

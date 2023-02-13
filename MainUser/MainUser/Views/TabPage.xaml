@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:reminder="clr-namespace:MainUser.Views.Reminder"
+            x:Class="MainUser.Views.TabPage"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:medicine="clr-namespace:MainUser.Views.Medicine"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    <medicine:MedicineListPage Title="Home"
+                               IconImageSource="homeIcon.png"></medicine:MedicineListPage>
+    <reminder:ReminderListPage Title="Reminder"
+                               IconImageSource="remindersIcon.png"></reminder:ReminderListPage>
+</TabbedPage>
