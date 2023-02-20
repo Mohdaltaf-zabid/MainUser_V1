@@ -25,7 +25,7 @@ namespace MainUser
             return false;
         }
 
-        public async Task<List<ReminderModel>> GetAll()
+        public async Task<List<ReminderModel>> GetAllUncompleted()
         {
             var UserEmail = Preferences.Get("userEmail", "");
             return (await firebaseClient.Child(nameof(ReminderModel)).OnceAsync<ReminderModel>()).Select(item => new ReminderModel
@@ -37,8 +37,27 @@ namespace MainUser
                 setDate = item.Object.setDate,
                 setTime = item.Object.setTime,
                 email = item.Object.email,
+                status = item.Object.status,
                 ID = item.Key
-            }).Where(a => a.email == UserEmail).ToList();
+            }).Where(a => a.email == UserEmail).Where(a => a.status == "Uncompleted").ToList();
+        }
+
+        public async Task<List<ReminderModel>> Getcompleted()
+        {
+            var UserEmail = Preferences.Get("userEmail", "");
+            return (await firebaseClient.Child(nameof(ReminderModel)).OnceAsync<ReminderModel>()).Select(item => new ReminderModel
+            {
+                title = item.Object.title,
+                notes = item.Object.notes,
+                priority = item.Object.priority,
+                repeat = item.Object.repeat,
+                setDate = item.Object.setDate,
+                setTime = item.Object.setTime,
+                email = item.Object.email,
+                status = item.Object.status,
+                completeDateTime = item.Object.completeDateTime,
+                ID = item.Key
+            }).Where(a => a.email == UserEmail).Where(a => a.status == "Completed").ToList();
         }
 
         public async Task<ReminderModel> GetById(string id)
@@ -52,9 +71,9 @@ namespace MainUser
             return true;
         }
 
-        public async Task<bool>Delete(string ID)
+        public async Task<bool> Delete(string ID)
         {
-            await firebaseClient.Child(nameof(ReminderModel)+ "/" + ID).DeleteAsync();
+            await firebaseClient.Child(nameof(ReminderModel) + "/" + ID).DeleteAsync();
             return true;
         }
     }

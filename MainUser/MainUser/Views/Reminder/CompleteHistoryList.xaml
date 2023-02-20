@@ -1,32 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.Reminder.ReminderListPage"
-             Title="Reminder List">
+             x:Class="MainUser.Views.Reminder.CompleteHistoryList">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
         <StackLayout  Orientation="Horizontal">
-            <Label Text="Reminder"
+            <Label Text="Complete Reminder"
                    FontSize="Title"
                    TextColor="#3478E8" />
-            <Button x:Name="btmHistory"
-                    Text="History"
-                    Clicked="btmHistory_Clicked"
-                    HorizontalOptions="EndAndExpand"
-                    CornerRadius="15" />
         </StackLayout>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
-                <ListView x:Name="ReminderListView"
+                <ListView x:Name="CompleteReminderListView"
                           ItemsSource="{Binding reminder}"
                           HasUnevenRows="True"
                           IsRefreshing="True"
                           IsPullToRefreshEnabled="True">
                     <!--ItemTapped="ReminderListView_ItemTapped">-->
-
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -43,13 +36,13 @@
 
                                     <StackLayout Orientation="Horizontal"
                                                  Padding="15">
-                                        <Image x:Name="UncheckedComplete"
-                                               Source="UncheckedRadioButton.png"
+                                        <Image x:Name="checkedComplete"
+                                               Source="CheckedRadioButton.png"
                                                HeightRequest="30"
                                                WidthRequest="30">
                                             <Image.GestureRecognizers>
-                                                <TapGestureRecognizer x:Name="completedTap"
-                                                                      Tapped="completedTap_Tapped"
+                                                <TapGestureRecognizer x:Name="UncompletedTap"
+                                                                      Tapped="UncompletedTap_Tapped"
                                                                       CommandParameter="{Binding ID}" />
                                             </Image.GestureRecognizers>
                                         </Image>
@@ -58,26 +51,9 @@
                                                    FontSize="Large" />
                                             <Label Text="{Binding priority, StringFormat='Priority:{0} '}"
                                                    FontSize="Medium" />
+                                            <Label Text="{Binding completeDateTime}"
+                                                   FontSize="Medium" />
                                         </StackLayout>
-                                        <Image Source="info_icon.png"
-                                               HeightRequest="30"
-                                               WidthRequest="30">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer x:Name="EditTap"
-                                                                      Tapped="EditTap_Tapped"
-                                                                      CommandParameter="{Binding ID}" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                        <!--<Image  Source="delete_icon.png"
-                                            HeightRequest="30"
-                                            WidthRequest="30">
-
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="DeleteTap"
-                                                                  Tapped="DeleteTap_Tapped"
-                                                                  CommandParameter="{Binding ID}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>-->
                                     </StackLayout>
                                 </SwipeView>
                             </ViewCell>
@@ -85,16 +61,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-
-            <ImageButton x:Name="AddReminderButton"
-                         Grid.Row="0"
-                         Source="PlusIcon.png"
-                         BorderWidth="1"
-                         BackgroundColor="Transparent"
-                         HorizontalOptions="End"
-                         Margin="0,0,20,22"
-                         VerticalOptions="End"
-                         Clicked="AddReminderButton_Clicked" />
         </Grid>
     </StackLayout>
 </ContentPage>

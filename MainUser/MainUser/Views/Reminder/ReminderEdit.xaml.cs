@@ -64,6 +64,7 @@ namespace MainUser.Views.Reminder
             reminder.title = title;
             reminder.notes = notes;
             reminder.priority = priority;
+            reminder.status = "Uncompleted";
             //reminder.repeat = repeat;
             //reminder.setDate = setDate;
             //reminder.setTime = setTime;
@@ -72,6 +73,7 @@ namespace MainUser.Views.Reminder
 
             if (isUpdated)
             {
+                await DisplayAlert("Information", "Reminder succussful edit", "Ok");
                 await Navigation.PopModalAsync();
             }
             else

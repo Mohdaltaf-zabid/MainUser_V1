@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.Medicine.StrengthUnitPage">
+    <ContentPage.Content>
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="Strength"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="TxtStrength"
+                   Placeholder="Strength" />
+            <Picker Title="Unit"
+                    x:Name="pickerUnit">
+                <Picker.Items>
+                    <x:String>g</x:String>
+                    <x:String>IU</x:String>
+                    <x:String>mcg</x:String>
+                    <x:String>mcg/hr</x:String>
+                    <x:String>mcg/ml</x:String>
+                    <x:String>mEq</x:String>
+                    <x:String>mg</x:String>
+                    <x:String>mg/cm2</x:String>
+                    <x:String>mg/g</x:String>
+                    <x:String>mcg/ml</x:String>
+                    <x:String>mL</x:String>
+                    <x:String>%</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Save"
+                    x:Name="ButtonSaveStrengthUnit"
+                    CornerRadius="15"
+                    Clicked="ButtonSaveStrengthUnit_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

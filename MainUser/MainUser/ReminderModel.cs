@@ -14,5 +14,7 @@ namespace MainUser
         public string setDate { get; set; }
         public string setTime { get; set; }
         public string email { get; set; }
+        public string status { get; set; }
+        public string completeDateTime { get; set; }
     }
 }

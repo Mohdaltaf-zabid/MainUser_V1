@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.Medicine.DoseTimePage">
+    <ContentPage.Content>
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="Dose/Time"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Frequency" />
+            <Picker Title="Frequency"
+                    x:Name="pickerFrequency"
+                    SelectedIndexChanged="pickerFrequency_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>As Needed</x:String>
+                    <x:String>Daily</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label x:Name="lblTimeADay"
+                   Text="How many times a day"
+                   IsVisible="False" />
+            <Picker Title="How many times a day"
+                    x:Name="pickerTimeADay"
+                    IsVisible="False"
+                    SelectedIndexChanged="pickerTimeADay_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label x:Name="lblTimeAndDose"
+                   Text="Set time and dose"
+                   IsVisible="False"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start" />
+            <Grid x:Name="gridTimeDose"
+                  IsVisible="False">
+                <TimePicker x:Name="tmrTimeFirst"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       x:Name="lblFirstStepper"
+                       BindingContext="{x:Reference SFirst}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SFirst"
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+
+                <TimePicker x:Name="tmrTimeSecond"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       x:Name="lblSecondStepper"
+                       BindingContext="{x:Reference SSecond}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SSecond"
+                         Grid.Row="1"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+
+                <TimePicker x:Name="tmrTimeThird"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       x:Name="lblThirdStepper"
+                       BindingContext="{x:Reference SThird}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SThird"
+                         Grid.Row="2"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+
+                <TimePicker x:Name="tmrTimeFourth"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="3"
+                       Grid.Column="1"
+                       x:Name="lblForthStepper"
+                       BindingContext="{x:Reference SForth}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SForth"
+                         Grid.Row="3"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+
+                <TimePicker x:Name="tmrTimeFifth"
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="4"
+                       Grid.Column="1"
+                       x:Name="lblFifthStepper"
+                       BindingContext="{x:Reference SFifth}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SFifth"
+                         Grid.Row="4"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+
+                <TimePicker x:Name="tmrTimesixth"
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            IsVisible="False" />
+                <Label Grid.Row="5"
+                       Grid.Column="1"
+                       x:Name="lblSixthStepper"
+                       BindingContext="{x:Reference SSixth}"
+                       Text="{Binding Value}"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+                <Stepper x:Name="SSixth"
+                         Grid.Row="5"
+                         Grid.Column="2"
+                         Maximum="10"
+                         Increment="1"
+                         HorizontalOptions="Center"
+                         IsVisible="False" />
+            </Grid>
+
+            <Button Text="Save"
+                    x:Name="ButtonSaveDoseTime"
+                    CornerRadius="15"
+                    Clicked="ButtonSaveDoseTime_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

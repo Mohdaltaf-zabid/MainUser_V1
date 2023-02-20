@@ -25,8 +25,8 @@ namespace MainUser.Views
             {
                 string fullName = TxtFullName.Text;
                 string email = TxtEmail.Text;
-                string gender = TxtGender.Text;
-                string birthDate = TxtBirthDate.Text;
+                //string gender = TxtGender.Text;
+                //string birthDate = TxtBirthDate.Text;
                 string password = TxtPassword.Text;
 
                 if (String.IsNullOrEmpty(fullName))
@@ -39,16 +39,16 @@ namespace MainUser.Views
                     await DisplayAlert("Warning", "Please enter Email", "Ok");
                     return;
                 }
-                if (String.IsNullOrEmpty(gender))
-                {
-                    await DisplayAlert("Warning", "Please enter Gender", "Ok");
-                    return;
-                }
-                if (String.IsNullOrEmpty(birthDate))
-                {
-                    await DisplayAlert("Warning", "Please enter Birth Date", "Ok");
-                    return;
-                }
+                //if (String.IsNullOrEmpty(gender))
+                //{
+                //    await DisplayAlert("Warning", "Please enter Gender", "Ok");
+                //    return;
+                //}
+                //if (String.IsNullOrEmpty(birthDate))
+                //{
+                //    await DisplayAlert("Warning", "Please enter Birth Date", "Ok");
+                //    return;
+                //}
                 if (String.IsNullOrEmpty(password))
                 {
                     await DisplayAlert("Warning", "Please enter Password", "Ok");

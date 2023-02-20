@@ -26,7 +26,7 @@ namespace MainUser.Views.Reminder
             string notes = TxtNotes.Text;
             string priority = pickerCountry.SelectedItem as String;
             //string repeat = TxtRepeat.Text;
-            //string setDate = TxtSetdate.Text;
+            //var setDate = TxtSetdate.Date.ToShortDateString();
             //string setTime = TxtSetTime.Text;
 
             if (string.IsNullOrEmpty(title))
@@ -58,7 +58,7 @@ namespace MainUser.Views.Reminder
             reminder.title = title;
             reminder.notes = notes;
             reminder.priority = priority;
-            //reminder.repeat = repeat;
+            reminder.status = "Uncompleted";
             //reminder.setDate = setDate;
             //reminder.setTime = setTime;
             reminder.email = Preferences.Get("userEmail", "default");
@@ -67,7 +67,8 @@ namespace MainUser.Views.Reminder
             if (isSaved)
             {
                 await DisplayAlert("Information", "Reminder succussful save", "Ok");
-                Clear();
+                await Navigation.PopModalAsync();
+                //Clear();
             }
             else
             {

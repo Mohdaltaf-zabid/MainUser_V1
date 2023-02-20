@@ -13,8 +13,6 @@
                    Placeholder="Title" />
             <Entry x:Name="TxtNotes"
                    Placeholder="Notes" />
-            <!--<Entry x:Name="TxtPriority"
-                   Placeholder="Priority" />-->
             <Picker Title="Priority"
                     x:Name="pickerCountry">
                 <Picker.Items>
@@ -24,11 +22,12 @@
                 </Picker.Items>
             </Picker>
             <!--<Entry x:Name="TxtRepeat"
-                   Placeholder="Repeat" />
-            <Entry x:Name="TxtSetdate"
-                   Placeholder="SetDate" />
-            <Entry x:Name="TxtSetTime"
-                   Placeholder="Set Time" />-->
+                   Placeholder="Repeat" />-->
+            <!--<DatePicker x:Name="TxtSetdate"
+                        Format="dd/MM/yyyy" />-->
+            <!--<TimePicker x:Name="TxtSetTime"
+                        Time="11:00:00"
+                        Format="T" />-->
 
             <Button Text="Save"
                     x:Name="ButtonSave"

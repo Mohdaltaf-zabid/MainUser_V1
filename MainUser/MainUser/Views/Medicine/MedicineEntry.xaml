@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.Medicine.MedicineEntry">
+    <ContentPage.Content>
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="Add Medicine"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Medicine Name" />
+            <Entry x:Name="TxtMedName"
+                   Placeholder="Medicine Name" />
+
+            <Label Text="Strength/Unit" />
+            <Entry x:Name="TxtStrengthUnit"
+                   Placeholder="Strength/Unit"
+                   Focused="TxtStrengthUnit_Focused" />
+
+            <Label Text="Dose/Time" />
+            <Entry x:Name="TxtDoseTime"
+                   Placeholder="Dose/Time"
+                   Focused="TxtDoseTime_Focused" />
+            
+            <Label Text="Start Date" />
+            <DatePicker x:Name="TxtStartdate"
+                        Format="dd/MM/yyyy" />
+            <Label Text="End Date" />
+            <DatePicker x:Name="TxtEnddate"
+                        Format="dd/MM/yyyy" />
+
+            <Button Text="Save"
+                    x:Name="ButtonSaveMed"
+                    CornerRadius="15"
+                    Clicked="ButtonSaveMed_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
