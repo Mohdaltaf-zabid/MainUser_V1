@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.LoginPage">
+             x:Class="MainUser.Views.LoginPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout Padding="15"
                      VerticalOptions="Center">
@@ -23,27 +26,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
-                <Label Text="Register"
+                
+                <Label Text="Forget Password?"
                        Grid.Row="0"
                        Grid.Column="0"
-                       TextColor="Blue"
-                       HorizontalOptions="Center"
-                       FontSize="Medium"
-                       x:Name="LblRegister">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="RegisterTap"
-                                              Tapped="RegisterTap_Tapped"></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Forget Password"
-                       Grid.Row="0"
-                       Grid.Column="1"
                        TextColor="Blue"
                        HorizontalOptions="Center"
                        FontSize="Medium"
@@ -53,6 +44,20 @@
                                               Tapped="ForgetTap_Tapped"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
+                <Label Text="----------OR----------"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       HorizontalOptions="Center"
+                       FontSize="Medium">
+                </Label>
+                <Button Text="Create New Account"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        CornerRadius="15"
+                        x:Name="BtnRegister"
+                        BackgroundColor="#3478E8"
+                        TextColor="White"
+                        Clicked="BtnRegister_Clicked" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

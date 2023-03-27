@@ -19,8 +19,8 @@ namespace MainUser.Views.Reminder
             LabelNotes.Text = reminder.notes;
             LabelPriority.Text = reminder.priority;
             LabelRepeat.Text = reminder.repeat;
-            LabelSetDate.Text = reminder.setDate;
-            LabelSetTime.Text = reminder.setTime;
+            //LabelSetDate.Text = reminder.setDate;
+            //LabelSetTime.Text = reminder.setTime;
             LabelID.Text = reminder.ID;
         }
     }

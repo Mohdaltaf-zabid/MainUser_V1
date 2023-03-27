@@ -20,8 +20,8 @@ namespace MainUser.Views.Reminder
             TxtNotes.Text = reminder.notes;
             pickerCountry.SelectedItem = reminder.priority;
             //TxtRepeat.Text = reminder.repeat;
-            //TxtSetdate.Text = reminder.setDate;
-            //TxtSetTime.Text = reminder.setTime;
+            TxtSetdate.Date = reminder.setDate;
+            TxtSetTime.Time = reminder.setTime;
             TxtID.Text = reminder.ID;
         }
 
@@ -31,8 +31,8 @@ namespace MainUser.Views.Reminder
             string notes = TxtNotes.Text;
             string priority = pickerCountry.SelectedItem as String;
             //string repeat = TxtRepeat.Text;
-            //string setDate = TxtSetdate.Text;
-            //string setTime = TxtSetTime.Text;
+            DateTime setDate = TxtSetdate.Date;
+            TimeSpan setTime = TxtSetTime.Time;
 
             if (string.IsNullOrEmpty(title))
             {
@@ -66,8 +66,8 @@ namespace MainUser.Views.Reminder
             reminder.priority = priority;
             reminder.status = "Uncompleted";
             //reminder.repeat = repeat;
-            //reminder.setDate = setDate;
-            //reminder.setTime = setTime;
+            reminder.setDate = setDate;
+            reminder.setTime = setTime;
             reminder.email = Preferences.Get("userEmail", "default");
             bool isUpdated = await reminderRepository.Update(reminder);
 
@@ -80,6 +80,11 @@ namespace MainUser.Views.Reminder
             {
                 await DisplayAlert("Error", "Update failed", "Cancel");
             }
+        }
+
+        private async void ButtonCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

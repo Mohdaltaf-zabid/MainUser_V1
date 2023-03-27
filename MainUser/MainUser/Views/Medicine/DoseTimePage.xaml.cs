@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Plugin.Media.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,14 +15,46 @@ namespace MainUser.Views.Medicine
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DoseTimePage : ContentPage
     {
+        DateTime startDate, endDate;
+        MedicineRepository medicineRepository = new MedicineRepository();
         public DoseTimePage()
         {
             InitializeComponent();
         }
 
-        private void ButtonSaveDoseTime_Clicked(object sender, EventArgs e)
+        private async void ButtonSaveDoseTime_Clicked(object sender, EventArgs e)
         {
+            MedicineModel medicineModel = new MedicineModel();
+            medicineModel.med_Name = Preferences.Get("MedName", "");
+            medicineModel.med_StartDate = Preferences.Get("startDate", startDate);
+            medicineModel.med_EndDate = Preferences.Get("endDate", endDate);
+            medicineModel.med_Strength = Preferences.Get("strength", "");
+            medicineModel.med_Unit = Preferences.Get("priority", "");
+            medicineModel.email = Preferences.Get("userEmail", "default");
 
+            string file = Preferences.Get("Image", "");
+            if (file != null)
+            {
+                medicineModel.Image = Preferences.Get("Image", "");
+            }
+            if (pickerFrequency.SelectedIndex == 0)
+            {
+                medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+            }
+            else
+            {
+                medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+            }
+
+            var isSaved = await medicineRepository.Save(medicineModel);
+            if (isSaved)
+            {
+                await DisplayAlert("Information", "Medicine succussful save", "Ok");
+            }
+            else
+            {
+                await DisplayAlert("Warning", "Medicine saved fail", "Ok");
+            }
         }
 
         private void pickerFrequency_SelectedIndexChanged(object sender, EventArgs e)

@@ -70,6 +70,8 @@ namespace MainUser.Views.Reminder
                 reminders.notes = reminder.notes;
                 reminders.priority = reminder.priority;
                 reminders.status = "Uncompleted";
+                reminders.setDate = reminder.setDate;
+                reminders.setTime = reminder.setTime;
                 reminders.email = reminder.email;
 
                 bool isUpdated = await reminderRepository.Update(reminders);

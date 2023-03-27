@@ -33,7 +33,7 @@ namespace MainUser.Views.Reminder
 
         private void AddReminderButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ReminderEntry());
+            Navigation.PushAsync(new ReminderEntry());
         }
 
         //private void ReminderListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -44,7 +44,7 @@ namespace MainUser.Views.Reminder
         //    }
 
         //    var reminder = e.Item as ReminderModel;
-        //    Navigation.PushModalAsync(new ReminderDetail(reminder));
+        //    Navigation.PushAsync(new ReminderDetail(reminder));
         //    ((ListView)sender).SelectedItem = null;
 
         //}
@@ -59,7 +59,7 @@ namespace MainUser.Views.Reminder
                 await DisplayAlert("Warning", "Data not found", "Ok");
             }
             reminder.ID = id;
-            await Navigation.PushModalAsync(new ReminderEdit(reminder));
+            await Navigation.PushAsync(new ReminderEdit(reminder));
         }
 
         private async void DeleteSwipeItem_Invoked(object sender, EventArgs e)
@@ -104,6 +104,8 @@ namespace MainUser.Views.Reminder
                 reminders.priority = reminder.priority;
                 reminders.status = "Completed";
                 reminders.email = reminder.email;
+                reminders.setDate = reminder.setDate;
+                reminders.setTime = reminder.setTime;
                 reminders.completeDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
                 bool isUpdated = await reminderRepository.Update(reminders);
@@ -122,7 +124,7 @@ namespace MainUser.Views.Reminder
 
         private void btmHistory_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new CompleteHistoryList());
+            Navigation.PushAsync(new CompleteHistoryList());
         }
     }
 }

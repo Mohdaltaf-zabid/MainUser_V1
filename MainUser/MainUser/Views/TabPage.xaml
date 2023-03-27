@@ -6,6 +6,12 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             xmlns:medicine="clr-namespace:MainUser.Views.Medicine"
             android:TabbedPage.ToolbarPlacement="Bottom">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="about" />
+        <ToolbarItem Order="Secondary"
+                     Text="logout" />
+    </TabbedPage.ToolbarItems>
     <medicine:MedicineListPage Title="Home"
                                IconImageSource="homeIcon.png"></medicine:MedicineListPage>
     <reminder:ReminderListPage Title="Reminder"

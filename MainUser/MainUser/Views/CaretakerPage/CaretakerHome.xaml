@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.CaretakerPage.CaretakerHome"
+             Title="List of patient">
+    <StackLayout Padding="15"
+                 VerticalOptions="Start">
+        <StackLayout  Orientation="Horizontal">
+            <!--<Label Text="List of patient"
+                   FontSize="Title"
+                   TextColor="#3478E8" />-->
+        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <ListView x:Name="PatientListView"
+                          ItemsSource="{Binding userTypeList}"
+                          HasUnevenRows="True"
+                          IsRefreshing="True"
+                          IsPullToRefreshEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="15">
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding fullName}"
+                                               FontSize="Large" />
+                                        <Label Text="{Binding email}"
+                                               FontSize="Medium" />
+                                    </StackLayout>
+                                    <!--<Image Source="info_icon.png"
+                                           HeightRequest="30"
+                                           WidthRequest="30">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="EditTap"
+                                                                  Tapped="EditTap_Tapped"
+                                                                  CommandParameter="{Binding ID}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>-->
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

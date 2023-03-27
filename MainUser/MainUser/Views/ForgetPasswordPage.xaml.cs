@@ -31,12 +31,17 @@ namespace MainUser.Views
             if (IsSend)
             {
                 await DisplayAlert("Reset Password", "Send link in your email", "Ok");
-                await Navigation.PopModalAsync();
+                await Navigation.PopAsync();
             }
             else
             {
                 await DisplayAlert("Reset Password", "Link send failed", "Ok");
             }
+        }
+
+        private async void ButtonCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

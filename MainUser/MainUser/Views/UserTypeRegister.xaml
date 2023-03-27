@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.UserTypeRegister">
+    <ContentPage.Content>
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="What type of user are you ?"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Picker Title="Type of user"
+                    x:Name="pickerUserType">
+                <Picker.Items>
+                    <x:String>Normal User/patient</x:String>
+                    <x:String>Family member/caretaker</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Set"
+                    x:Name="ButtonSetUserType"
+                    CornerRadius="15"
+                    Clicked="ButtonSetUserType_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.RequestCaretakerPage"
+             Title="Request Caretaker">
+    <StackLayout Padding="15"
+                 VerticalOptions="Start">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <ListView x:Name="AddCaretakerListView"
+                          ItemsSource="{Binding CaretakerAddList}"
+                          HasUnevenRows="True"
+                          IsRefreshing="True"
+                          IsPullToRefreshEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="15">
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Label x:Name="lblfullName"
+                                               Text="{Binding caretakerName}"
+                                               FontSize="Large" />
+                                        <Label x:Name="lblemail"
+                                               Text="{Binding caretakerEmail}"
+                                               FontSize="Medium" />
+                                    </StackLayout>
+                                    <Button Text="{Binding status}"
+                                            x:Name="ButtonAdd"
+                                            CornerRadius="15"
+                                            Command="{Binding Path=BindingContext.ButtonCommand, Source={x:Reference AddCaretakerListView}}"
+                                            CommandParameter="{Binding ID}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

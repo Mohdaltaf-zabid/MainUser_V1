@@ -15,6 +15,13 @@ namespace MainUser.Views
         public TabPage()
         {
             InitializeComponent();
+
+            NavigationPage.SetHasBackButton(this, false);
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

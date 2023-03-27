@@ -1,4 +1,6 @@
-﻿using MainUser.Views.Reminder;
+﻿using MainUser.Views.Flyout;
+using MainUser.Views.FlyoutCaretaker;
+using MainUser.Views.Reminder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +16,19 @@ namespace MainUser.Views
     public partial class LoginPage : ContentPage
     {
         UserRepository userRepository = new UserRepository();
+        UserTypeRepository userTypeRepository = new UserTypeRepository();
         public LoginPage()
         {
             InitializeComponent();
+
+            //Preferences.Remove("token");
             bool haskey = Preferences.ContainsKey("token");
             if (haskey)
             {
                 string token = Preferences.Get("token", "");
                 if (!string.IsNullOrEmpty(token))
                 {
-                    Navigation.PushAsync(new TabPage());
+                    startup();
                 }
             }
         }
@@ -49,7 +54,7 @@ namespace MainUser.Views
                 {
                     Preferences.Set("token", token);
                     Preferences.Set("userEmail", email);
-                    await Navigation.PushAsync(new TabPage());
+                    startup();
                 }
                 else
                 {
@@ -73,14 +78,31 @@ namespace MainUser.Views
             }
         }
 
-        private async void RegisterTap_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new RegisterUser());
-        }
-
         private async void ForgetTap_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new ForgetPasswordPage());
+            await Navigation.PushAsync(new ForgetPasswordPage());
+        }
+
+        private async void startup()
+        {
+            var usertype = await userTypeRepository.GetByEmail();
+            string userType = usertype.userType;
+            if (!string.IsNullOrEmpty(userType))
+            {
+                if (userType == "Normal User/patient")
+                {
+                    await Navigation.PushModalAsync(new MasterDetailPageUser());
+                }
+                else if (userType == "Family member/caretaker")
+                {
+                    await Navigation.PushModalAsync(new MasterDetailPageCaretaker());
+                }
+            }
+        }
+
+        private async void BtnRegister_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterUser());
         }
     }
 }

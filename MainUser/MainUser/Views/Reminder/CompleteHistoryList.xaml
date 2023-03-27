@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.Reminder.CompleteHistoryList">
+             x:Class="MainUser.Views.Reminder.CompleteHistoryList"
+             Title="Complete Reminder">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
-        <StackLayout  Orientation="Horizontal">
+        <!--<StackLayout  Orientation="Horizontal">
             <Label Text="Complete Reminder"
                    FontSize="Title"
                    TextColor="#3478E8" />
-        </StackLayout>
+        </StackLayout>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

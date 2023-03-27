@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.Medicine.MedicineEntry">
+             x:Class="MainUser.Views.Medicine.MedicineEntry"
+             Title="Add Medicine">
     <ContentPage.Content>
         <StackLayout Padding="15"
                      VerticalOptions="CenterAndExpand">
-            <Label Text="Add Medicine"
+            <!--<Label Text="Add Medicine"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center" />-->
+
+            <Image x:Name="medicineImage"
+                HeightRequest="100"
+                   Source="cameraIcon.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="cameraIcon"
+                                          Tapped="cameraIcon_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <!--<Image x:Name="medicineImage"
+                   HeightRequest="150" />-->
 
             <Label Text="Medicine Name" />
             <Entry x:Name="TxtMedName"
@@ -18,19 +30,21 @@
                    Placeholder="Strength/Unit"
                    Focused="TxtStrengthUnit_Focused" />
 
-            <Label Text="Dose/Time" />
+            <!--<Label Text="Dose/Time" />
             <Entry x:Name="TxtDoseTime"
                    Placeholder="Dose/Time"
-                   Focused="TxtDoseTime_Focused" />
-            
+                   Focused="TxtDoseTime_Focused" />-->
+
             <Label Text="Start Date" />
             <DatePicker x:Name="TxtStartdate"
-                        Format="dd/MM/yyyy" />
+                        Format="D" />
             <Label Text="End Date" />
             <DatePicker x:Name="TxtEnddate"
-                        Format="dd/MM/yyyy" />
+                        Format="D"
+                        BindingContext="{x:Reference TxtStartdate}"
+                        MinimumDate="{Binding Date}" />
 
-            <Button Text="Save"
+            <Button Text="Next"
                     x:Name="ButtonSaveMed"
                     CornerRadius="15"
                     Clicked="ButtonSaveMed_Clicked" />

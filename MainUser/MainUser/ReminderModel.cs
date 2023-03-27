@@ -11,8 +11,8 @@ namespace MainUser
         public string notes { get; set; }
         public string priority { get; set; }
         public string repeat { get; set; }
-        public string setDate { get; set; }
-        public string setTime { get; set; }
+        public DateTime setDate { get; set; }
+        public TimeSpan setTime { get; set; }
         public string email { get; set; }
         public string status { get; set; }
         public string completeDateTime { get; set; }

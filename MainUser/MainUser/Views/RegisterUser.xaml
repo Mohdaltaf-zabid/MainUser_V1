@@ -1,34 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.RegisterUser">
+             x:Class="MainUser.Views.RegisterUser"
+             Title="Register new user">
     <ContentPage.Content>
-        <StackLayout Padding="15">
-            <Label Text="Register new user"
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <!--<Label Text="Register new user"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   FontSize="Large" />
+                   FontSize="Large" />-->
+
+            <Label Text="Full Name"
+                   FontSize="Medium" />
             <Entry Placeholder="Full Name"
                    x:Name="TxtFullName">
             </Entry>
+
+            <Label Text="Email"
+                   FontSize="Medium" />
             <Entry Placeholder="Email"
                    x:Name="TxtEmail">
             </Entry>
+
+            <Label Text="Type of user"
+                   FontSize="Medium" />
+            <Picker Title="Type of user"
+                    x:Name="pickerUserType">
+                <Picker.Items>
+                    <x:String>Normal User/patient</x:String>
+                    <x:String>Family member/caretaker</x:String>
+                </Picker.Items>
+            </Picker>
             <!--<Entry Placeholder="Gender"
                    x:Name="TxtGender">
             </Entry>
             <Entry Placeholder="Birth Date"
                    x:Name="TxtBirthDate">
             </Entry>-->
+
+            <Label Text="Password"
+                   FontSize="Medium" />
             <Entry Placeholder="Password"
                    x:Name="TxtPassword"
                    IsPassword="True">
             </Entry>
-            <Button Text="Register"
-                    x:Name="ButtonRegister"
-                    Clicked="ButtonRegister_Clicked"
-                    CornerRadius="15">
-            </Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Cancel"
+                        x:Name="ButtonCancel"
+                        CornerRadius="15"
+                        Clicked="ButtonCancel_Clicked" />
+
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Register"
+                        x:Name="ButtonRegister"
+                        Clicked="ButtonRegister_Clicked"
+                        BackgroundColor="#3478E8"
+                        TextColor="White"
+                        CornerRadius="15" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

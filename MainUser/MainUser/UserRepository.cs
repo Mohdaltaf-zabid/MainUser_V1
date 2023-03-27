@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MainUser
 {

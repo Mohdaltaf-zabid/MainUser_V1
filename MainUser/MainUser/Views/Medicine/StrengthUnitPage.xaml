@@ -7,7 +7,8 @@
                      VerticalOptions="CenterAndExpand">
             <Label Text="Strength"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center" 
+                   />
 
             <Entry x:Name="TxtStrength"
                    Placeholder="Strength" />
@@ -29,10 +30,10 @@
                 </Picker.Items>
             </Picker>
 
-            <Button Text="Save"
-                    x:Name="ButtonSaveStrengthUnit"
+            <Button Text="Set"
+                    x:Name="ButtonSetStrengthUnit"
                     CornerRadius="15"
-                    Clicked="ButtonSaveStrengthUnit_Clicked" />
+                    Clicked="ButtonSetStrengthUnit_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

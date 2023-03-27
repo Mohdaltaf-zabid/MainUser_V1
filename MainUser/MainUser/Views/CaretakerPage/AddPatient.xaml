@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.CaretakerPage.AddPatient">
+    <StackLayout Padding="15"
+                 VerticalOptions="Start">
+        <StackLayout  Orientation="Horizontal">
+            <SearchBar Placeholder="Search"
+                       x:Name="TxtSearch"
+                       TextChanged="TxtSearch_TextChanged"
+                       SearchButtonPressed="TxtSearch_SearchButtonPressed" />
+        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <ListView x:Name="AddPatientListView"
+                          ItemsSource="{Binding userAddList}"
+                          HasUnevenRows="True"
+                          IsRefreshing="True"
+                          IsPullToRefreshEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="15">
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Label x:Name="lblfullName"
+                                               Text="{Binding fullName}"
+                                               FontSize="Large" />
+                                        <Label x:Name="lblemail"
+                                               Text="{Binding email}"
+                                               FontSize="Medium" />
+                                        <Label Text="{Binding usertType}"
+                                               IsVisible="false" />
+                                    </StackLayout>
+                                    <Button Text="{Binding status}"
+                                            x:Name="ButtonAdd"
+                                            CornerRadius="15"
+                                            Command="{Binding Path=BindingContext.ButtonCommand, Source={x:Reference AddPatientListView}}"
+                                            CommandParameter="{Binding ID}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

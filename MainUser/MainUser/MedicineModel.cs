@@ -14,7 +14,8 @@ namespace MainUser
         public string med_Frequency { get; set; }
         public string med_TimesADay { get; set; }
         public string med_SetTime { get; set; }
-        public string med_StartDate { get; set; }
-        public string med_EndDate { get; set; }
+        public DateTime med_StartDate { get; set; }
+        public DateTime med_EndDate { get; set; }
+        public string Image { get; set; }
     }
 }

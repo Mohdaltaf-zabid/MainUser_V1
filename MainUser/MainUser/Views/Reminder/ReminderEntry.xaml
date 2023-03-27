@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.Reminder.ReminderEntry">
+             x:Class="MainUser.Views.Reminder.ReminderEntry"
+             Title="Reminder Entry">
     <ContentPage.Content>
         <StackLayout Padding="15"
                      VerticalOptions="CenterAndExpand">
-            <Label Text="Reminder Entry"
+            <!--<Label Text="Reminder Entry"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center" />
-
+                   HorizontalOptions="Center"
+                   FontSize="Title"/>-->
+            <Label Text="Title" 
+                   FontSize="Medium"/>
             <Entry x:Name="TxtTitle"
                    Placeholder="Title" />
+            <Label Text="Notes"
+                   FontSize="Medium" />
             <Entry x:Name="TxtNotes"
                    Placeholder="Notes" />
+            <Label Text="Priority"
+                   FontSize="Medium" />
             <Picker Title="Priority"
                     x:Name="pickerCountry">
                 <Picker.Items>
@@ -23,16 +30,43 @@
             </Picker>
             <!--<Entry x:Name="TxtRepeat"
                    Placeholder="Repeat" />-->
-            <!--<DatePicker x:Name="TxtSetdate"
-                        Format="dd/MM/yyyy" />-->
-            <!--<TimePicker x:Name="TxtSetTime"
-                        Time="11:00:00"
-                        Format="T" />-->
+            <Label Text="Date"
+                   FontSize="Medium" />
+            <DatePicker x:Name="TxtSetdate"
+                        Format="dd/MM/yyyy"
+                        Focused="TxtSetdate_Focused" />
+            <Label Text="Time"
+                   FontSize="Medium" />
+            <TimePicker x:Name="TxtSetTime"
+                        Format="T"
+                        Focused="TxtSetTime_Focused" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Button Text="Save"
-                    x:Name="ButtonSave"
-                    CornerRadius="15"
-                    Clicked="ButtonSave_Clicked" />
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Cancel"
+                        x:Name="ButtonCancel"
+                        CornerRadius="15"
+                        Clicked="ButtonCancel_Clicked" />
+
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Save"
+                        x:Name="ButtonSave"
+                        CornerRadius="15"
+                        Clicked="ButtonSave_Clicked"
+                        BackgroundColor="#3478E8"
+                        TextColor="White" />
+
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

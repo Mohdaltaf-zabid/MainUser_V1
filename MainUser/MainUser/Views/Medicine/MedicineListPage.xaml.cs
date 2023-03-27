@@ -20,7 +20,7 @@ namespace MainUser.Views.Medicine
 
         private void AddMedicineButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MedicineEntry());
+            Navigation.PushAsync(new MedicineEntry());
         }
     }
 }
