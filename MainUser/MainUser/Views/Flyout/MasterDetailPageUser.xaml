@@ -1,17 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MainUser.Views.Flyout.MasterDetailPageUser"
-             xmlns:pages="clr-namespace:MainUser.Views.Flyout"
-            NavigationPage.HasBackButton="False">
-  <FlyoutPage.Flyout>
-    <pages:MasterDetailPageUserFlyout x:Name="FlyoutPage" />
-  </FlyoutPage.Flyout>
-  <FlyoutPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
-        <pages:MasterDetailPageUserDetail />
-      </x:Arguments>
-    </NavigationPage>
-  </FlyoutPage.Detail>
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MainUser.Views.Flyout.MasterDetailPageUser"
+            xmlns:pages="clr-namespace:MainUser.Views.Flyout"
+            NavigationPage.HasBackButton="False"
+            NavigationPage.HasNavigationBar="False">
+    <FlyoutPage.ToolbarItems>
+        <ToolbarItem Text="Profile"
+                     Order="Secondary"
+                     Priority="0" />
+        <ToolbarItem 
+                     Text="Logout"
+                     Order="Secondary"
+                     Priority="1"
+                     Clicked="LogoutToolbarItem_Clicked" />
+    </FlyoutPage.ToolbarItems>
+    <FlyoutPage.Flyout>
+        <pages:MasterDetailPageUserFlyout x:Name="FlyoutPage" />
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:MasterDetailPageUserDetail />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
 </FlyoutPage>

@@ -4,7 +4,7 @@
              x:Class="MainUser.Views.Flyout.MasterDetailPageUserFlyout"
              Title="Flyout"
              NavigationPage.HasBackButton="False">
-  <StackLayout>
+    <StackLayout>
     <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
@@ -23,6 +23,7 @@
             <RowDefinition Height="10"/>
           </Grid.RowDefinitions>
           <Label
+              x:Name="labelMenu"
               Grid.Column="1"
               Grid.Row="2"
               Text="Menu"

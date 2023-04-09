@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainUser.Views.CaretakerPage.MenuPatient">
+    <ContentPage.Content>
+        <StackLayout Padding="15"
+                     VerticalOptions="CenterAndExpand">
+            <Label x:Name="LabelPatientName"
+                   FontSize="Medium" />
+            <Label x:Name="LabelPatientEmail"
+                   FontSize="Medium" />
+            <Button Text="Reminder"
+                    x:Name="BtnReminder"
+                    CornerRadius="15"
+                    Clicked="BtnReminder_Clicked" />
+            <Button Text="Medicine"
+                    x:Name="BtnMedicine"
+                    CornerRadius="15"
+                    Clicked="BtnMedicine_Clicked" />
+            <Button Text="Medicine History"
+                    x:Name="BtnMedicineHistory"
+                    CornerRadius="15"
+                    Clicked="BtnMedicineHistory_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

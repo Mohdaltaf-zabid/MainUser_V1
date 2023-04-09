@@ -20,8 +20,6 @@ namespace MainUser.Views
         public LoginPage()
         {
             InitializeComponent();
-
-            //Preferences.Remove("token");
             bool haskey = Preferences.ContainsKey("token");
             if (haskey)
             {
@@ -54,11 +52,12 @@ namespace MainUser.Views
                 {
                     Preferences.Set("token", token);
                     Preferences.Set("userEmail", email);
-                    startup();
+                    //startup();
                 }
                 else
                 {
                     await DisplayAlert("Sign In", "Sign in failed", "Ok");
+                    return;
                 }
             }
             catch (Exception ex)
@@ -66,14 +65,17 @@ namespace MainUser.Views
                 if (ex.Message.Contains("EMAIL_NOT_FOUND"))
                 {
                     await DisplayAlert("Unauthorized", "Email not found", "Ok");
+                    return;
                 }
                 else if (ex.Message.Contains("INVALID_PASSWORD"))
                 {
                     await DisplayAlert("Unauthorized", "Invalid password", "Ok");
+                    return;
                 }
                 else
                 {
                     await DisplayAlert("Error", ex.Message, "Ok");
+                    return;
                 }
             }
         }
@@ -87,11 +89,14 @@ namespace MainUser.Views
         {
             var usertype = await userTypeRepository.GetByEmail();
             string userType = usertype.userType;
+            string userfullName = usertype.fullName;
             if (!string.IsNullOrEmpty(userType))
             {
+                Preferences.Set("fullName", userfullName);
+
                 if (userType == "Normal User/patient")
                 {
-                    await Navigation.PushModalAsync(new MasterDetailPageUser());
+                    await Navigation.PushAsync(new MasterDetailPageUser());
                 }
                 else if (userType == "Family member/caretaker")
                 {

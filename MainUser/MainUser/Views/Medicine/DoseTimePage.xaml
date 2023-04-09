@@ -24,8 +24,8 @@
                    IsVisible="False" />
             <Picker Title="How many times a day"
                     x:Name="pickerTimeADay"
-                    IsVisible="False"
-                    SelectedIndexChanged="pickerTimeADay_SelectedIndexChanged">
+                    IsVisible="False">
+                <!--SelectedIndexChanged="pickerTimeADay_SelectedIndexChanged">-->
                 <Picker.Items>
                     <x:String>1</x:String>
                     <x:String>2</x:String>
@@ -35,7 +35,7 @@
                     <x:String>6</x:String>
                 </Picker.Items>
             </Picker>
-            <Label x:Name="lblTimeAndDose"
+            <!--<Label x:Name="lblTimeAndDose"
                    Text="Set time and dose"
                    IsVisible="False"
                    VerticalOptions="Start"
@@ -161,7 +161,7 @@
                          Increment="1"
                          HorizontalOptions="Center"
                          IsVisible="False" />
-            </Grid>
+            </Grid>-->
 
             <Button Text="Save"
                     x:Name="ButtonSaveDoseTime"

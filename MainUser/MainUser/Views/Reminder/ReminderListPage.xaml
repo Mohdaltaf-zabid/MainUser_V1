@@ -20,6 +20,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Label x:Name="lblNoRecord"
+                   Text="No Record"
+                   FontSize="Title"
+                   TextColor="#3478E8"
+                   IsVisible="False"/>
             <ScrollView Grid.Row="0">
                 <ListView x:Name="ReminderListView"
                           ItemsSource="{Binding reminder}"

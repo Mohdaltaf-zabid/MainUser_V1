@@ -92,7 +92,7 @@ namespace MainUser
                 ID = item.Key
             }).Where(a => a.userType == "Normal User/patient")
             .Where(a => a.email == UserEmail)
-            .Where(a => a.status == "Approved").ToList();
+            .Where(a => a.status == "Request").ToList();
         }
 
         public async Task<List<UserTypeModel>> GetUserList(string fullname)

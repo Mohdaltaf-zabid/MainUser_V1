@@ -1,4 +1,5 @@
-﻿using Plugin.Media.Abstractions;
+﻿using MainUser.Views.Reminder;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,37 +25,53 @@ namespace MainUser.Views.Medicine
 
         private async void ButtonSaveDoseTime_Clicked(object sender, EventArgs e)
         {
+            var isSaved = false;
+            DateTime StartDate = Preferences.Get("startDate", startDate);
+            DateTime EndDate = Preferences.Get("endDate", startDate);
             MedicineModel medicineModel = new MedicineModel();
-            medicineModel.med_Name = Preferences.Get("MedName", "");
-            medicineModel.med_StartDate = Preferences.Get("startDate", startDate);
-            medicineModel.med_EndDate = Preferences.Get("endDate", endDate);
-            medicineModel.med_Strength = Preferences.Get("strength", "");
-            medicineModel.med_Unit = Preferences.Get("priority", "");
-            medicineModel.email = Preferences.Get("userEmail", "default");
 
-            string file = Preferences.Get("Image", "");
-            if (file != null)
+            foreach (DateTime day in EachDay(StartDate, EndDate))
             {
-                medicineModel.Image = Preferences.Get("Image", "");
-            }
-            if (pickerFrequency.SelectedIndex == 0)
-            {
-                medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
-            }
-            else
-            {
-                medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+
+                medicineModel.med_Name = Preferences.Get("MedName", "");
+                medicineModel.med_StartDate = Preferences.Get("startDate", startDate);
+                medicineModel.med_EndDate = Preferences.Get("endDate", endDate);
+                medicineModel.med_Day = day;
+                medicineModel.med_Strength = Preferences.Get("strength", "");
+                medicineModel.med_Unit = Preferences.Get("priority", "");
+                medicineModel.email = Preferences.Get("userEmail", "default");
+                medicineModel.med_status = "Not taken";
+
+                string file = Preferences.Get("Image", "");
+                if (file != null)
+                {
+                    medicineModel.Image = Preferences.Get("Image", "");
+                }
+                if (pickerFrequency.SelectedIndex == 0)
+                {
+                    medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+                }
+                else
+                {
+                    medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+                }
+                isSaved = await medicineRepository.Save(medicineModel);
             }
 
-            var isSaved = await medicineRepository.Save(medicineModel);
             if (isSaved)
             {
                 await DisplayAlert("Information", "Medicine succussful save", "Ok");
+                await Navigation.PushAsync(new MedicineListPage());
             }
             else
             {
                 await DisplayAlert("Warning", "Medicine saved fail", "Ok");
             }
+        }
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        {
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                yield return day;
         }
 
         private void pickerFrequency_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,83 +80,83 @@ namespace MainUser.Views.Medicine
             {
                 string TimeDay = pickerFrequency.SelectedItem as String;
                 string daily = "Daily";
-                if (String.Equals(TimeDay, daily))
+                if (!String.Equals(TimeDay, daily))
                 {
-                    visibleTimeADayTrue(false);
-                    gridTimeDose.IsVisible = false;
-                    lblTimeAndDose.IsVisible = false;
+                    //visibleTimeADayTrue(false);
+                    ////gridTimeDose.IsVisible = false;
+                    //lblTimeAndDose.IsVisible = false;
                     pickerTimeADay.SelectedIndex = -1;
 
                 }
                 else
                 {
-                    visibleTimeADayTrue(true);
+                    //visibleTimeADayTrue(true);
                 }
             }
         }
 
-        private void pickerTimeADay_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (pickerTimeADay.SelectedIndex != -1)
-            {
-                gridTimeDose.IsVisible = true;
-                lblTimeAndDose.IsVisible = true;
-                if (pickerTimeADay.SelectedIndex == 0)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(false);
-                    visibleThirdDose(false);
-                    visibleForthDose(false);
-                    visibleFifthDose(false);
-                    visibleSixthDose(false);
-                }
-                else if (pickerTimeADay.SelectedIndex == 1)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(true);
-                    visibleThirdDose(false);
-                    visibleForthDose(false);
-                    visibleFifthDose(false);
-                    visibleSixthDose(false);
-                }
-                else if (pickerTimeADay.SelectedIndex == 2)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(true);
-                    visibleThirdDose(true);
-                    visibleForthDose(false);
-                    visibleFifthDose(false);
-                    visibleSixthDose(false);
-                }
-                else if (pickerTimeADay.SelectedIndex == 3)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(true);
-                    visibleThirdDose(true);
-                    visibleForthDose(true);
-                    visibleFifthDose(false);
-                    visibleSixthDose(false);
-                }
-                else if (pickerTimeADay.SelectedIndex == 4)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(true);
-                    visibleThirdDose(true);
-                    visibleForthDose(true);
-                    visibleFifthDose(true);
-                    visibleSixthDose(false);
-                }
-                else if (pickerTimeADay.SelectedIndex == 5)
-                {
-                    visibleFirstDose(true);
-                    visibleSecondDose(true);
-                    visibleThirdDose(true);
-                    visibleForthDose(true);
-                    visibleFifthDose(true);
-                    visibleSixthDose(true);
-                }
-            }
-        }
+        /*private void pickerTimeADay_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (pickerTimeADay.SelectedIndex != -1)
+        //    {
+        //        gridTimeDose.IsVisible = true;
+        //        lblTimeAndDose.IsVisible = true;
+        //        if (pickerTimeADay.SelectedIndex == 0)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(false);
+        //            visibleThirdDose(false);
+        //            visibleForthDose(false);
+        //            visibleFifthDose(false);
+        //            visibleSixthDose(false);
+        //        }
+        //        else if (pickerTimeADay.SelectedIndex == 1)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(true);
+        //            visibleThirdDose(false);
+        //            visibleForthDose(false);
+        //            visibleFifthDose(false);
+        //            visibleSixthDose(false);
+        //        }
+        //        else if (pickerTimeADay.SelectedIndex == 2)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(true);
+        //            visibleThirdDose(true);
+        //            visibleForthDose(false);
+        //            visibleFifthDose(false);
+        //            visibleSixthDose(false);
+        //        }
+        //        else if (pickerTimeADay.SelectedIndex == 3)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(true);
+        //            visibleThirdDose(true);
+        //            visibleForthDose(true);
+        //            visibleFifthDose(false);
+        //            visibleSixthDose(false);
+        //        }
+        //        else if (pickerTimeADay.SelectedIndex == 4)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(true);
+        //            visibleThirdDose(true);
+        //            visibleForthDose(true);
+        //            visibleFifthDose(true);
+        //            visibleSixthDose(false);
+        //        }
+        //        else if (pickerTimeADay.SelectedIndex == 5)
+        //        {
+        //            visibleFirstDose(true);
+        //            visibleSecondDose(true);
+        //            visibleThirdDose(true);
+        //            visibleForthDose(true);
+        //            visibleFifthDose(true);
+        //            visibleSixthDose(true);
+        //        }
+        //    }
+        //}
 
         private void visibleTimeADayTrue(bool visble)
         {
@@ -181,6 +198,6 @@ namespace MainUser.Views.Medicine
             tmrTimesixth.IsVisible = visble;
             lblSixthStepper.IsVisible = visble;
             SSixth.IsVisible = visble;
-        }
+        }*/
     }
 }

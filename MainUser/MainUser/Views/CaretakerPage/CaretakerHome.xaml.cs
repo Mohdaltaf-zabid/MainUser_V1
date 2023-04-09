@@ -28,5 +28,18 @@ namespace MainUser.Views.CaretakerPage
             PatientListView.ItemsSource = userTypeList;
             PatientListView.IsRefreshing = false;
         }
+
+        private void userTypeList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+            {
+                return;
+            }
+
+            var userID = e.Item as UserTypeModel;
+            Navigation.PushAsync(new MenuPatient(userID));
+            ((ListView)sender).SelectedItem = null;
+
+        }
     }
 }

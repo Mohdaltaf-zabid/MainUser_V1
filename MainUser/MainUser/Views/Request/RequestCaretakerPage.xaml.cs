@@ -45,6 +45,7 @@ namespace MainUser.Views
                 if (user == null)
                 {
                     await DisplayAlert("Warning", "Data not found", "Ok");
+                    return;
                 }
 
                 UserTypeModel userTypeModel = new UserTypeModel();
@@ -54,6 +55,7 @@ namespace MainUser.Views
                 userTypeModel.email = user.email;
                 userTypeModel.status = "Approved";
                 userTypeModel.caretakerEmail = user.caretakerEmail;
+                userTypeModel.caretakerName = user.caretakerEmail;
 
                 bool isUpdated = await userTypeRepository.UpdatePatient(userTypeModel);
 

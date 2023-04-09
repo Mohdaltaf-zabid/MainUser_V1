@@ -62,6 +62,7 @@ namespace MainUser.Views.Reminder
                 if (reminder == null)
                 {
                     await DisplayAlert("Warning", "Data not found", "Ok");
+                    return;
                 }
 
                 ReminderModel reminders = new ReminderModel();

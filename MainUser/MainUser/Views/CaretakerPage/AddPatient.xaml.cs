@@ -34,34 +34,14 @@ namespace MainUser.Views.CaretakerPage
 
         }
 
-        private async void TxtSearch_SearchButtonPressed(object sender, EventArgs e)
+        private void TxtSearch_SearchButtonPressed(object sender, EventArgs e)
         {
-            string userAddList = TxtSearch.Text;
-            if (!string.IsNullOrEmpty(userAddList))
-            {
-                var userlist = await userTypeRepository.GetUserList(userAddList);
-                AddPatientListView.ItemsSource = null;
-                AddPatientListView.ItemsSource = userlist;
-            }
-            else
-            {
-                OnAppearing();
-            }
+            searchProcess();
         }
 
-        private async void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string userAddList = TxtSearch.Text;
-            if (!string.IsNullOrEmpty(userAddList))
-            {
-                var userlist = await userTypeRepository.GetUserList(userAddList);
-                AddPatientListView.ItemsSource = null;
-                AddPatientListView.ItemsSource = userlist;
-            }
-            else
-            {
-                OnAppearing();
-            }
+            searchProcess();
         }
 
         public async void ButtonAddPatient(string str)
@@ -77,6 +57,7 @@ namespace MainUser.Views.CaretakerPage
                 if (user == null)
                 {
                     await DisplayAlert("Warning", "Data not found", "Ok");
+                    return;
                 }
 
                 UserTypeModel userTypeModel = new UserTypeModel();
@@ -86,6 +67,7 @@ namespace MainUser.Views.CaretakerPage
                 userTypeModel.email = user.email;
                 userTypeModel.status = "Request";
                 userTypeModel.caretakerEmail = Preferences.Get("userEmail", "default");
+                userTypeModel.caretakerName = Preferences.Get("fullName", "default");
 
                 bool isUpdated = await userTypeRepository.UpdatePatient(userTypeModel);
 
@@ -98,6 +80,21 @@ namespace MainUser.Views.CaretakerPage
                 {
                     await DisplayAlert("Warning", "Request Failed", "Ok");
                 }
+            }
+        }
+
+        private async void searchProcess()
+        {
+            string userAddList = TxtSearch.Text;
+            if (!string.IsNullOrEmpty(userAddList))
+            {
+                var userlist = await userTypeRepository.GetUserList(userAddList);
+                AddPatientListView.ItemsSource = null;
+                AddPatientListView.ItemsSource = userlist;
+            }
+            else
+            {
+                OnAppearing();
             }
         }
     }

@@ -11,7 +11,7 @@
                    HorizontalOptions="Center" />-->
 
             <Image x:Name="medicineImage"
-                HeightRequest="100"
+                   HeightRequest="100"
                    Source="cameraIcon.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer x:Name="cameraIcon"
@@ -26,14 +26,87 @@
                    Placeholder="Medicine Name" />
 
             <Label Text="Strength/Unit" />
-            <Entry x:Name="TxtStrengthUnit"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="0"
+                       Grid.Column="0"
+                       x:Name="TxtStrength"
+                       Placeholder="Strength"
+                       Keyboard="Numeric"/>
+                <Picker Grid.Row="0"
+                        Grid.Column="1"
+                        Title="Unit"
+                        x:Name="pickerUnit">
+                    <Picker.Items>
+                        <x:String>g</x:String>
+                        <x:String>IU</x:String>
+                        <x:String>mcg</x:String>
+                        <x:String>mcg/hr</x:String>
+                        <x:String>mcg/ml</x:String>
+                        <x:String>mEq</x:String>
+                        <x:String>mg</x:String>
+                        <x:String>mg/cm2</x:String>
+                        <x:String>mg/g</x:String>
+                        <x:String>mcg/ml</x:String>
+                        <x:String>mL</x:String>
+                        <x:String>%</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+            <!--<Entry x:Name="TxtStrengthUnit"
                    Placeholder="Strength/Unit"
-                   Focused="TxtStrengthUnit_Focused" />
+                   Focused="TxtStrengthUnit_Focused" />-->
 
             <!--<Label Text="Dose/Time" />
             <Entry x:Name="TxtDoseTime"
                    Placeholder="Dose/Time"
                    Focused="TxtDoseTime_Focused" />-->
+            <!--<Label Text="Dose/Time"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />-->
+
+            <Label Text="Frequency" />
+            <Picker Title="Frequency"
+                    x:Name="pickerFrequency"
+                    SelectedIndexChanged="pickerFrequency_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>As Needed</x:String>
+                    <x:String>Daily</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label x:Name="lblTimeADay"
+                   Text="How many times a day"
+                   IsVisible="False" />
+            <Picker Title="How many times a day"
+                    x:Name="pickerTimeADay"
+                    IsVisible="False">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label x:Name="lblTimeAndDose"
+                   Text="Set dose"
+                   IsVisible="False"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start" />
+
+            <Entry x:Name="TxtDose"
+                   Placeholder="Dose"
+                   Keyboard="Numeric"
+                   IsVisible="False"/>
 
             <Label Text="Start Date" />
             <DatePicker x:Name="TxtStartdate"

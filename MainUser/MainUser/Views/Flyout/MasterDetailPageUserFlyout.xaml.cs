@@ -38,7 +38,7 @@ namespace MainUser.Views.Flyout
                     new MasterDetailPageUserFlyoutMenuItem { Id = 0, Title = "Medicine",TargetType=typeof(MedicineListPage)  },
                     new MasterDetailPageUserFlyoutMenuItem { Id = 1, Title = "Reminder" , TargetType = typeof(ReminderListPage) },
                     new MasterDetailPageUserFlyoutMenuItem { Id = 2, Title = "Request caretaker",TargetType=typeof(RequestCaretakerPage)  },
-                    //new MasterDetailPageUserFlyoutMenuItem { Id = 3, Title = "Page 4" },
+                    //new MasterDetailPageUserFlyoutMenuItem { Id = 3, Title = "Logout", TargetType=typeof(LoginPage)},
                     //new MasterDetailPageUserFlyoutMenuItem { Id = 4, Title = "Page 5" },
                 });
             }

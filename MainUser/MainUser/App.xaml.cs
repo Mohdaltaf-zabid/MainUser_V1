@@ -11,7 +11,6 @@ namespace MainUser
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new LoginPage());
         }
 

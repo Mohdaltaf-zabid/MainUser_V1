@@ -19,7 +19,8 @@
                           ItemsSource="{Binding userTypeList}"
                           HasUnevenRows="True"
                           IsRefreshing="True"
-                          IsPullToRefreshEnabled="True">
+                          IsPullToRefreshEnabled="True"
+                          ItemTapped="userTypeList_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

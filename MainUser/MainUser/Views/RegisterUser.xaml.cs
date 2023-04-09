@@ -60,7 +60,7 @@ namespace MainUser.Views
                 }
                 if (pickerUserType.SelectedIndex == -1)
                 {
-                    await DisplayAlert("Warning", "Please enter user type", "Cancel");
+                    await DisplayAlert("Warning", "Please enter user type", "Ok");
                 }
 
                 var IsSave = await userRepository.Register(email, password, fullName);
@@ -83,11 +83,13 @@ namespace MainUser.Views
                     else
                     {
                         await DisplayAlert("Warning", "Reminder saved fail", "Ok");
+                        return;
                     }
                 }
                 else
                 {
                     await DisplayAlert("Register user", "Register failed", "Ok");
+                    return;
                 }
             }
             catch (Exception ex)
@@ -95,10 +97,12 @@ namespace MainUser.Views
                 if (ex.Message.Contains("EMAIL_EXISTS"))
                 {
                     await DisplayAlert("Warning", "Email Exist", "Ok");
+                    return;
                 }
                 else
                 {
                     await DisplayAlert("Error", ex.Message, "Ok");
+                    return;
                 }
             }
         }

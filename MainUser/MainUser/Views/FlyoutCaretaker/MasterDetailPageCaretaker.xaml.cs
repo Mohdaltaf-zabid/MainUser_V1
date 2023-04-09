@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -34,6 +34,12 @@ namespace MainUser.Views.FlyoutCaretaker
             IsPresented = false;
 
             FlyoutPage.ListView.SelectedItem = null;
+        }
+
+        private async void LogoutToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Preferences.Clear();
+            await Navigation.PopModalAsync();
         }
     }
 }

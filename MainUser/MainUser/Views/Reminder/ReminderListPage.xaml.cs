@@ -25,9 +25,26 @@ namespace MainUser.Views.Reminder
 
         protected override async void OnAppearing()
         {
-            var reminder = await reminderRepository.GetAllUncompleted();
+            var email = Preferences.Get("PatientEmail", null);
+            if (!string.IsNullOrEmpty(email))
+            {
+                email = Preferences.Get("PatientEmail", "");
+            }
+            else
+            {
+                email = Preferences.Get("userEmail", "");
+            }
+            var reminder = await reminderRepository.GetAllUncompleted(email);
             ReminderListView.ItemsSource = null;
-            ReminderListView.ItemsSource = reminder;
+            lblNoRecord.IsVisible = false;
+            if (reminder.Count != 0)
+            {
+                ReminderListView.ItemsSource = reminder;
+            }
+            else
+            {
+                lblNoRecord.IsVisible = true;
+            }
             ReminderListView.IsRefreshing = false;
         }
 
@@ -57,6 +74,7 @@ namespace MainUser.Views.Reminder
             if (reminder == null)
             {
                 await DisplayAlert("Warning", "Data not found", "Ok");
+                return;
             }
             reminder.ID = id;
             await Navigation.PushAsync(new ReminderEdit(reminder));
@@ -78,6 +96,7 @@ namespace MainUser.Views.Reminder
                 else
                 {
                     await DisplayAlert("Warning", "Reminder Deleted Failed", "Ok");
+                    return;
                 }
             }
         }
@@ -95,6 +114,7 @@ namespace MainUser.Views.Reminder
                 if (reminder == null)
                 {
                     await DisplayAlert("Warning", "Data not found", "Ok");
+                    return;
                 }
 
                 ReminderModel reminders = new ReminderModel();
@@ -118,6 +138,7 @@ namespace MainUser.Views.Reminder
                 else
                 {
                     await DisplayAlert("Warning", "Reminder Deleted Failed", "Ok");
+                    return;
                 }
             }
         }

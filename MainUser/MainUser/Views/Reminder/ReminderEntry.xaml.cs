@@ -38,15 +38,18 @@ namespace MainUser.Views.Reminder
 
             if (string.IsNullOrEmpty(title))
             {
-                await DisplayAlert("Warning", "Please enter Title", "Cancel");
+                await DisplayAlert("Warning", "Please enter Title", "Ok");
+                return;
             }
             if (string.IsNullOrEmpty(notes))
             {
-                await DisplayAlert("Warning", "Please enter Notes", "Cancel");
+                await DisplayAlert("Warning", "Please enter Notes", "Ok");
+                return;
             }
             if (pickerCountry.SelectedIndex == -1)
             {
-                await DisplayAlert("Warning", "Please enter Priority", "Cancel");
+                await DisplayAlert("Warning", "Please enter Priority", "Ok");
+                return;
             }
             //if (string.IsNullOrEmpty(repeat))
             //{
@@ -84,12 +87,12 @@ namespace MainUser.Views.Reminder
             if (isSaved)
             {
                 await DisplayAlert("Information", "Reminder succussful save", "Ok");
-                await Navigation.PopModalAsync();
-                //Clear();
+                await Navigation.PopAsync();
             }
             else
             {
                 await DisplayAlert("Warning", "Reminder saved fail", "Ok");
+                return;
             }
         }
 

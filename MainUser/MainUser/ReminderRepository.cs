@@ -25,9 +25,8 @@ namespace MainUser
             return false;
         }
 
-        public async Task<List<ReminderModel>> GetAllUncompleted()
+        public async Task<List<ReminderModel>> GetAllUncompleted(string email)
         {
-            var UserEmail = Preferences.Get("userEmail", "");
             return (await firebaseClient.Child(nameof(ReminderModel)).OnceAsync<ReminderModel>()).Select(item => new ReminderModel
             {
                 title = item.Object.title,
@@ -39,7 +38,7 @@ namespace MainUser
                 email = item.Object.email,
                 status = item.Object.status,
                 ID = item.Key
-            }).Where(a => a.email == UserEmail).Where(a => a.status == "Uncompleted").ToList();
+            }).Where(a => a.email == email).Where(a => a.status == "Uncompleted").ToList();
         }
 
         public async Task<List<ReminderModel>> Getcompleted()
