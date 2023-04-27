@@ -1,4 +1,5 @@
-﻿using Plugin.Media;
+﻿using MainUser.Views.FlyoutCaretaker;
+using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -87,7 +88,7 @@ namespace MainUser.Views.Reminder
             if (isSaved)
             {
                 await DisplayAlert("Information", "Reminder succussful save", "Ok");
-                await Navigation.PopAsync();
+                await Navigation.PopModalAsync();
             }
             else
             {
@@ -119,7 +120,7 @@ namespace MainUser.Views.Reminder
 
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

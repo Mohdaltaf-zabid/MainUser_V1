@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainUser.Views.Reminder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Xamarin.Essentials.Permissions;
 
 namespace MainUser.Views.CaretakerPage
 {
@@ -25,7 +27,15 @@ namespace MainUser.Views.CaretakerPage
         {
             var userTypeList = await userTypeRepository.GetPatientApproveList();
             PatientListView.ItemsSource = null;
-            PatientListView.ItemsSource = userTypeList;
+            if (userTypeList.Count != 0)
+            {
+                PatientListView.ItemsSource = userTypeList;
+
+            }
+            else
+            {
+                lblNoRecord.IsVisible = true;
+            }
             PatientListView.IsRefreshing = false;
         }
 
@@ -37,9 +47,14 @@ namespace MainUser.Views.CaretakerPage
             }
 
             var userID = e.Item as UserTypeModel;
-            Navigation.PushAsync(new MenuPatient(userID));
+            Navigation.PushModalAsync(new MenuPatient(userID));
             ((ListView)sender).SelectedItem = null;
 
+        }
+
+        private void btmAddPatient_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new AddPatient());
         }
     }
 }

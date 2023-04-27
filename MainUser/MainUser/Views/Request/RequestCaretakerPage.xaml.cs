@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -28,7 +29,15 @@ namespace MainUser.Views
         {
             var CaretakerAddList = await userTypeRepository.GetPatientPendingList();
             AddCaretakerListView.ItemsSource = null;
-            AddCaretakerListView.ItemsSource = CaretakerAddList;
+            if (CaretakerAddList.Count != 0)
+            {
+                lblNoRecord.IsVisible = false;
+                AddCaretakerListView.ItemsSource = CaretakerAddList;
+            }
+            else
+            {
+                lblNoRecord.IsVisible = true;
+            }
             AddCaretakerListView.IsRefreshing = false;
 
         }
@@ -56,6 +65,9 @@ namespace MainUser.Views
                 userTypeModel.status = "Approved";
                 userTypeModel.caretakerEmail = user.caretakerEmail;
                 userTypeModel.caretakerName = user.caretakerEmail;
+                userTypeModel.gender = user.gender;
+                userTypeModel.birthdate = user.birthdate;
+                userTypeModel.profileImage = user.profileImage;
 
                 bool isUpdated = await userTypeRepository.UpdatePatient(userTypeModel);
 

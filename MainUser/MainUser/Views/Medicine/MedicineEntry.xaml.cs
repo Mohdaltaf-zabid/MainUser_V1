@@ -53,6 +53,16 @@ namespace MainUser.Views.Medicine
                 await DisplayAlert("Warning", "Please enter Medicine name", "Cancel");
                 return;
             }
+            if (string.IsNullOrEmpty(strength))
+            {
+                await DisplayAlert("Warning", "Please enter strength", "Cancel");
+                return;
+            }
+            if (string.IsNullOrEmpty(unit))
+            {
+                await DisplayAlert("Warning", "Please enter unit", "Cancel");
+                return;
+            }
 
             if (file != null)
             {
@@ -65,7 +75,6 @@ namespace MainUser.Views.Medicine
 
             foreach (DateTime day in EachDay(startDate, endDate))
             {
-
                 medicineModel.med_Name = MedName;
                 medicineModel.med_StartDate = startDate;
                 medicineModel.med_EndDate = endDate;
@@ -76,30 +85,28 @@ namespace MainUser.Views.Medicine
                 medicineModel.med_status = "Not taken";
                 medicineModel.med_Frequency = frequnecy;
                 medicineModel.med_TimesADay = TimeADay;
-                medicineModel.med_Frequency = frequnecy;
                 medicineModel.med_Dose = Dose;
-
 
                 string file = Preferences.Get("Image", "");
                 if (file != null)
                 {
                     medicineModel.Image = Preferences.Get("Image", "");
                 }
-                if (pickerFrequency.SelectedIndex == 0)
-                {
-                    medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
-                }
-                else
-                {
-                    medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
-                }
+                /*if (pickerFrequency.SelectedIndex == 0)
+                {*/
+                medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+                /*}
+                //else
+                //{
+                //    medicineModel.med_Frequency = pickerFrequency.SelectedItem as String;
+                //}*/
                 isSaved = await medicineRepository.Save(medicineModel);
             }
 
             if (isSaved)
             {
                 await DisplayAlert("Information", "Medicine succussful save", "Ok");
-                await Navigation.PushAsync(new MedicineListPage());
+                await Navigation.PopModalAsync();
             }
             else
             {
@@ -131,30 +138,62 @@ namespace MainUser.Views.Medicine
 
         private async void cameraIcon_Tapped(object sender, EventArgs e)
         {
-            //await CrossMedia.Current.Initialize();
+            await CrossMedia.Current.Initialize();
             try
             {
-                file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
-                {
-                    PhotoSize = PhotoSize.Medium
-                });
+                /*file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                //{
+                //    Directory = "Test",
+                //    SaveToAlbum = true,
+                //    CompressionQuality = 75,
+                //    CustomPhotoSize = 50,
+                //    PhotoSize = PhotoSize.MaxWidthHeight,
+                //    MaxWidthHeight = 2000,
+                //    DefaultCamera = CameraDevice.Rear
+                //});
 
-                if (file == null)
-                {
-                    return;
-                }
-                medicineImage.Source = ImageSource.FromStream(() =>
-                {
-                    return file.GetStream();
+                //if (file == null)
+                //{
+                //    return;
+                //}
+                //medicineImage.Source = ImageSource.FromStream(() =>
+                //{
+                //    return file.GetStream();
 
-                });
+                });*/
 
-                //var result = await MediaPicker.CapturePhotoAsync();
+                var cameraMediaOptions = new StoreCameraMediaOptions
+                {
+                    DefaultCamera = CameraDevice.Rear,
+
+                    // Set the value to true if you want to save the photo to your public storage.
+                    SaveToAlbum = true,
+
+                    // Give the name of the folder you want to save to
+                    Directory = "MyAppName",
+
+                    // Give a photo name of your choice,
+                    // or set it to null if you want to use the default naming convention
+                    Name = null,
+
+                    // Set the compression quality
+                    // 0 = Maximum compression but worse quality
+                    // 100 = Minimum compression but best quality
+                    CompressionQuality = 100,
+
+                    CustomPhotoSize = 100,
+
+                };
+                file = await CrossMedia.Current.TakePhotoAsync(cameraMediaOptions);
+                if (file == null) return;
+                medicineImage.Source = ImageSource.FromStream(() => file.GetStream());
+
+                /*var result = await MediaPicker.CapturePhotoAsync();
                 //if (result != null)
                 //{
                 //    var stream = await result.OpenReadAsync();
                 //    medicineImage.Source = ImageSource.FromStream(() => stream);
-                //}
+                }*/
             }
             catch (Exception ex)
             {
@@ -190,6 +229,16 @@ namespace MainUser.Views.Medicine
         {
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
                 yield return day;
+        }
+        public IEnumerable<TimeSpan> EachHours(TimeSpan startTime, TimeSpan endTime)
+        {
+            for (var time = startTime; time <= endTime; time = time.Add(new TimeSpan(0, 15, 0)))
+                yield return time;
+        }
+
+        private async void ButtonCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

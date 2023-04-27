@@ -4,72 +4,91 @@
              x:Class="MainUser.Views.Reminder.ReminderEdit"
              Title="Reminder Update">
     <ContentPage.Content>
-        <StackLayout Padding="15"
-                     VerticalOptions="CenterAndExpand">
-            <!--<Label Text="Reminder Update"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   FontSize="Large" />-->
+        <RelativeLayout>
+            <StackLayout Padding="15"
+                         VerticalOptions="Start">
+                <Label Text="Reminder Update"
+                       TextColor="#3478E8"
+                       FontSize="Title"
+                       Margin="0, 0, 0, 20" />
 
-            <Entry x:Name="TxtID"
-                   IsVisible="false" />
-            <Label Text="Title"
-                   FontSize="Medium" />
-            <Entry x:Name="TxtTitle"
-                   Placeholder="Title" />
-            <Label Text="Notes"
-                   FontSize="Medium" />
-            <Entry x:Name="TxtNotes"
-                   Placeholder="Notes" />
-            <!--<Entry x:Name="TxtPriority"
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           x:Name="TxtID"
+                           IsVisible="false" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           FontSize="Medium" />
+                </Grid>
+                <Label Text="Title"
+                       FontSize="Medium" />
+                <Entry x:Name="TxtTitle"
+                       Placeholder="Title" />
+                <Label Text="Notes"
+                       FontSize="Medium" />
+                <Entry x:Name="TxtNotes"
+                       Placeholder="Notes" />
+                <!--<Entry x:Name="TxtPriority"
                    Placeholder="Priority" />-->
-            <Label Text="Priority"
-                   FontSize="Medium" />
-            <Picker Title="Priority"
-                    x:Name="pickerCountry">
-                <Picker.Items>
-                    <x:String>Low</x:String>
-                    <x:String>Medium</x:String>
-                    <x:String>High</x:String>
-                </Picker.Items>
-            </Picker>
-            <!--<Entry x:Name="TxtRepeat"
+                <Label Text="Priority"
+                       FontSize="Medium" />
+                <Picker Title="Priority"
+                        x:Name="pickerCountry">
+                    <Picker.Items>
+                        <x:String>Low</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>High</x:String>
+                    </Picker.Items>
+                </Picker>
+                <!--<Entry x:Name="TxtRepeat"
                    Placeholder="Repeat" />-->
-            <Label Text="Date"
-                   FontSize="Medium" />
-            <DatePicker x:Name="TxtSetdate"
-                        Format="dd/MM/yyyy" />
-            <Label Text="Time"
-                   FontSize="Medium" />
-            <TimePicker x:Name="TxtSetTime"
-                        Time="11:00:00"
-                        Format="T" />
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <Label Text="Date"
+                       FontSize="Medium" />
+                <DatePicker x:Name="TxtSetdate"
+                            Format="dd/MM/yyyy" />
+                <Label Text="Time"
+                       FontSize="Medium" />
+                <TimePicker x:Name="TxtSetTime"
+                            Time="11:00:00"
+                            Format="T" />
+            </StackLayout>
+            <StackLayout VerticalOptions="End"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Cancel"
-                        x:Name="ButtonCancel"
-                        CornerRadius="15"
-                        Clicked ="ButtonCancel_Clicked" />
+                    <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Cancel"
+                            x:Name="ButtonCancel"
+                            CornerRadius="15"
+                            Clicked="ButtonCancel_Clicked" />
 
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Text="Update"
-                        x:Name="ButtonUpdate"
-                        CornerRadius="15"
-                        Clicked="ButtonUpdate_Clicked"
-                        BackgroundColor="#3478E8"
-                        TextColor="White" />
-            </Grid>
-        </StackLayout>
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Update"
+                            x:Name="ButtonUpdate"
+                            CornerRadius="15"
+                            Clicked="ButtonUpdate_Clicked"
+                            BackgroundColor="#3478E8"
+                            TextColor="White" />
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

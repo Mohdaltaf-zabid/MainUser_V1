@@ -52,7 +52,7 @@ namespace MainUser.Views
                 {
                     Preferences.Set("token", token);
                     Preferences.Set("userEmail", email);
-                    //startup();
+                    startup();
                 }
                 else
                 {
@@ -82,7 +82,7 @@ namespace MainUser.Views
 
         private async void ForgetTap_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ForgetPasswordPage());
+            await Navigation.PushModalAsync(new ForgetPasswordPage());
         }
 
         private async void startup()
@@ -96,18 +96,18 @@ namespace MainUser.Views
 
                 if (userType == "Normal User/patient")
                 {
-                    await Navigation.PushAsync(new MasterDetailPageUser());
+                    await Navigation.PushModalAsync(new TabbedPageUser());
                 }
                 else if (userType == "Family member/caretaker")
                 {
-                    await Navigation.PushModalAsync(new MasterDetailPageCaretaker());
+                    await Navigation.PushModalAsync(new TabbedPageCaretaker());
                 }
             }
         }
 
         private async void BtnRegister_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterUser());
+            await Navigation.PushModalAsync(new RegisterUser());
         }
     }
 }

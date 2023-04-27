@@ -26,33 +26,37 @@ namespace MainUser.Views.Medicine
         }
         protected override async void OnAppearing()
         {
-            var email = Preferences.Get("PatientEmail", null);
-            var date = TxtSearchdate.Date;
-            if (!string.IsNullOrEmpty(email))
+            bool haskey = Preferences.ContainsKey("token");
+            if (haskey)
             {
-                email = Preferences.Get("PatientEmail", "");
+                var email = Preferences.Get("PatientEmail", null);
+                var date = TxtSearchdate.Date;
+                if (!string.IsNullOrEmpty(email))
+                {
+                    email = Preferences.Get("PatientEmail", "");
+                }
+                else
+                {
+                    email = Preferences.Get("userEmail", "");
+                }
+                var medicine = await medicineRepository.GetMedicineByDate(email, date);
+                MedicineListView.ItemsSource = null;
+                if (medicine.Count != 0)
+                {
+                    lblNoRecord.IsVisible = false;
+                    MedicineListView.ItemsSource = medicine;
+                }
+                else
+                {
+                    lblNoRecord.IsVisible = true;
+                }
+                MedicineListView.IsRefreshing = false;
             }
-            else
-            {
-                email = Preferences.Get("userEmail", "");
-            }
-            var medicine = await medicineRepository.GetMedicineByDate(email, date);
-            MedicineListView.ItemsSource = null;
-            if (medicine.Count != 0)
-            {
-                lblNoRecord.IsVisible = false;
-                MedicineListView.ItemsSource = medicine;
-            }
-            else
-            {
-                lblNoRecord.IsVisible = true;
-            }
-            MedicineListView.IsRefreshing = false;
         }
 
-        private void AddMedicineButton_Clicked(object sender, EventArgs e)
+        private async void AddMedicineButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MedicineEntry());
+            await Navigation.PushModalAsync(new MedicineEntry());
         }
 
         private async void EditTap_Tapped(object sender, EventArgs e)
@@ -66,7 +70,7 @@ namespace MainUser.Views.Medicine
                 return;
             }
             medcine.ID = id;
-            await Navigation.PushAsync(new MedUpdateStatus(medcine));
+            await Navigation.PushModalAsync(new MedUpdateStatus(medcine));
         }
 
         private void TxtSearchdate_Unfocused(object sender, FocusEventArgs e)

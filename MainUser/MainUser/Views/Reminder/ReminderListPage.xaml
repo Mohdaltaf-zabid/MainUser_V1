@@ -6,7 +6,8 @@
              NavigationPage.HasBackButton="False">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
-        <StackLayout  Orientation="Horizontal">
+        <StackLayout  Orientation="Horizontal"
+                      Margin="0, 0, 0, 20">
             <Label Text="Reminder"
                    FontSize="Title"
                    TextColor="#3478E8" />
@@ -16,6 +17,14 @@
                     HorizontalOptions="EndAndExpand"
                     CornerRadius="15" />
         </StackLayout>
+        <!--<StackLayout Padding="15"
+                     VerticalOptions="Center">
+            <Image x:Name="profileImage"
+                   HeightRequest="160"
+                   WidthRequest="160" />
+            <Label x:Name="LabelPatientName"
+                   FontSize="Medium" />
+        </StackLayout>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

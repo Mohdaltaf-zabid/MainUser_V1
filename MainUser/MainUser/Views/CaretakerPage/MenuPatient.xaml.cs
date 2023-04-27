@@ -1,4 +1,5 @@
-﻿using MainUser.Views.Reminder;
+﻿using MainUser.Views.Medicine;
+using MainUser.Views.Reminder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +20,21 @@ namespace MainUser.Views.CaretakerPage
             string email = userTypeModel.email;
             Preferences.Set("PatientEmail", email);
             LabelPatientName.Text = userTypeModel.fullName;
-            LabelPatientEmail.Text = email;
+            //LabelPatientEmail.Text = email;
+            if (userTypeModel.profileImage != null)
+            {
+                profileImage.Source = userTypeModel.profileImage;
+            }
         }
 
         private void BtnReminder_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReminderListPage());
+            Navigation.PushModalAsync(new ReminderListPage());
         }
 
         private void BtnMedicine_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new MedicineListPage());
         }
 
         private void BtnMedicineHistory_Clicked(object sender, EventArgs e)

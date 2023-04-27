@@ -5,9 +5,10 @@
     <ContentPage.Content>
         <StackLayout Padding="15"
                      VerticalOptions="CenterAndExpand">
+            <Image x:Name="profileImage"
+                       HeightRequest="160"
+                       WidthRequest="160" />
             <Label x:Name="LabelPatientName"
-                   FontSize="Medium" />
-            <Label x:Name="LabelPatientEmail"
                    FontSize="Medium" />
             <Button Text="Reminder"
                     x:Name="BtnReminder"

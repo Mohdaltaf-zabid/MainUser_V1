@@ -5,15 +5,18 @@
              Title="Complete Reminder">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
-        <!--<StackLayout  Orientation="Horizontal">
-            <Label Text="Complete Reminder"
+        <Label Text="Reminder Complete"
                    FontSize="Title"
                    TextColor="#3478E8" />
-        </StackLayout>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Label x:Name="lblNoRecord"
+                   Text="No Complete task"
+                   FontSize="Title"
+                   TextColor="#3478E8"
+                   IsVisible="False" />
             <ScrollView Grid.Row="0">
                 <ListView x:Name="CompleteReminderListView"
                           ItemsSource="{Binding reminder}"

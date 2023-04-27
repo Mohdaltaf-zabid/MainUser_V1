@@ -31,7 +31,9 @@ namespace MainUser.Views
                 /*string gender = TxtGender.Text;
                 //string birthDate = TxtBirthDate.Text;*/
                 string password = TxtPassword.Text;
+                DateTime birthdate = TxtBirthDate.Date;
                 string userType = pickerUserType.SelectedItem as String;
+                string gender = pickerGender.SelectedItem as String;
 
                 if (String.IsNullOrEmpty(fullName))
                 {
@@ -61,6 +63,9 @@ namespace MainUser.Views
                 if (pickerUserType.SelectedIndex == -1)
                 {
                     await DisplayAlert("Warning", "Please enter user type", "Ok");
+                }if (pickerGender.SelectedIndex == -1)
+                {
+                    await DisplayAlert("Warning", "Please enter gender", "Ok");
                 }
 
                 var IsSave = await userRepository.Register(email, password, fullName);
@@ -73,12 +78,14 @@ namespace MainUser.Views
                     userTypeModel.email = email;
                     userTypeModel.fullName = fullName;
                     userTypeModel.userType = userType;
+                    userTypeModel.gender = gender;
+                    userTypeModel.birthdate = birthdate;
                     userTypeModel.status = "Add";
                     var isSaved = await userTypeRepository.Save(userTypeModel);
                     if (isSaved)
                     {
                         await DisplayAlert("Register user", "Register complete", "Ok");
-                        await Navigation.PopAsync();
+                        await Navigation.PopModalAsync();
                     }
                     else
                     {
@@ -109,7 +116,7 @@ namespace MainUser.Views
 
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

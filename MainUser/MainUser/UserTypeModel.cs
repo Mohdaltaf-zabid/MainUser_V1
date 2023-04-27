@@ -13,5 +13,8 @@ namespace MainUser
         public string status { get; set; }
         public string caretakerEmail { get; set; }
         public string caretakerName { get; set; }
+        public string gender { get; set; }
+        public DateTime birthdate { get; set; }
+        public string profileImage { get; set; }
     }
 }

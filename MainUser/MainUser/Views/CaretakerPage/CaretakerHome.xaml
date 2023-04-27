@@ -5,15 +5,26 @@
              Title="List of patient">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
-        <StackLayout  Orientation="Horizontal">
-            <!--<Label Text="List of patient"
+        <StackLayout  Orientation="Horizontal"
+                      Margin="0, 0, 0, 20">
+            <Label Text="List of patient"
                    FontSize="Title"
-                   TextColor="#3478E8" />-->
+                   TextColor="#3478E8" />
+            <Button x:Name="btmAddPatient"
+                    Text="Add"
+                    Clicked="btmAddPatient_Clicked"
+                    HorizontalOptions="EndAndExpand"
+                    CornerRadius="15" />
         </StackLayout>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Label x:Name="lblNoRecord"
+                   Text="No Patient"
+                   FontSize="Title"
+                   TextColor="#3478E8"
+                   IsVisible="False" />
             <ScrollView Grid.Row="0">
                 <ListView x:Name="PatientListView"
                           ItemsSource="{Binding userTypeList}"

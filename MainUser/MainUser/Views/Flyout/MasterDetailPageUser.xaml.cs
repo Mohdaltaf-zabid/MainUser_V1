@@ -24,7 +24,8 @@ namespace MainUser.Views.Flyout
             //    string token = Preferences.Get("token", "");
             //    if (!string.IsNullOrEmpty(token))
             //    {
-            //        startup();
+            //
+            //        ();
             //    }
             //}
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;

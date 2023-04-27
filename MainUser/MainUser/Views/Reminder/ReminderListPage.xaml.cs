@@ -16,11 +16,15 @@ namespace MainUser.Views.Reminder
         ReminderRepository reminderRepository = new ReminderRepository();
         public ReminderListPage()
         {
-            InitializeComponent();
-            ReminderListView.RefreshCommand = new Command(() =>
+            bool haskey = Preferences.ContainsKey("token");
+            if (haskey)
             {
-                OnAppearing();
-            });
+                InitializeComponent();
+                ReminderListView.RefreshCommand = new Command(() =>
+                {
+                    OnAppearing();
+                });
+            }
         }
 
         protected override async void OnAppearing()
@@ -48,9 +52,9 @@ namespace MainUser.Views.Reminder
             ReminderListView.IsRefreshing = false;
         }
 
-        private void AddReminderButton_Clicked(object sender, EventArgs e)
+        private async void AddReminderButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReminderEntry());
+            await Navigation.PushModalAsync(new ReminderEntry());
         }
 
         //private void ReminderListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -77,7 +81,7 @@ namespace MainUser.Views.Reminder
                 return;
             }
             reminder.ID = id;
-            await Navigation.PushAsync(new ReminderEdit(reminder));
+            await Navigation.PushModalAsync(new ReminderEdit(reminder));
         }
 
         private async void DeleteSwipeItem_Invoked(object sender, EventArgs e)
@@ -145,7 +149,7 @@ namespace MainUser.Views.Reminder
 
         private void btmHistory_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CompleteHistoryList());
+            Navigation.PushModalAsync(new CompleteHistoryList());
         }
     }
 }

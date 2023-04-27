@@ -77,7 +77,7 @@ namespace MainUser.Views.Reminder
             if (isUpdated)
             {
                 await DisplayAlert("Information", "Reminder succussful edit", "Ok");
-                await Navigation.PopAsync();
+                await Navigation.PopModalAsync();
             }
             else
             {
@@ -88,7 +88,7 @@ namespace MainUser.Views.Reminder
 
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

@@ -5,10 +5,19 @@
              Title="Request Caretaker">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
+        <Label Text="Reqeust Caretaker"
+               FontSize="Title"
+               TextColor="#3478E8"
+               Margin="0, 0, 0, 20" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Label x:Name="lblNoRecord"
+                   Text="No Active Request"
+                   FontSize="Title"
+                   TextColor="#3478E8"
+                   IsVisible="False" />
             <ScrollView Grid.Row="0">
                 <ListView x:Name="AddCaretakerListView"
                           ItemsSource="{Binding CaretakerAddList}"

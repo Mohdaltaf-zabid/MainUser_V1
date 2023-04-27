@@ -4,6 +4,12 @@
              x:Class="MainUser.Views.CaretakerPage.AddPatient">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
+        <StackLayout Padding="15">
+            <Label Text="Adding patients"
+                   FontSize="Title"
+                   TextColor="#3478E8"
+                   Margin="0, 0, 0, 20" />
+        </StackLayout>
         <StackLayout  Orientation="Horizontal">
             <SearchBar Placeholder="Search"
                        x:Name="TxtSearch"

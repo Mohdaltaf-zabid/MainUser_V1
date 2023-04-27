@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MainUser.Views.TabbedPageCaretaker"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:CaretakerPage="clr-namespace:MainUser.Views.CaretakerPage"
+            xmlns:views="clr-namespace:MainUser.Views"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#3478E8"
+            SelectedTabColor="White"
+            UnselectedTabColor="Gray">
+    <CaretakerPage:CaretakerHome Title="List of patient"
+                                 IconImageSource="homeIcon.png" />
+    <views:ProfilePage Title="Profile"
+                       IconImageSource="profile.png"></views:ProfilePage>
+</TabbedPage>

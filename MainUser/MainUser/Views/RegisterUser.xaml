@@ -4,73 +4,101 @@
              x:Class="MainUser.Views.RegisterUser"
              Title="Register new user">
     <ContentPage.Content>
-        <StackLayout Padding="15"
-                     VerticalOptions="CenterAndExpand">
-            <!--<Label Text="Register new user"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   FontSize="Large" />-->
+        <RelativeLayout>
+            <StackLayout Padding="15"
+                         VerticalOptions="Start">
+                <Label Text="Register user"
+                       TextColor="#3478E8"
+                       Margin="0, 0, 0, 20"
+                       FontSize="Title" />
 
-            <Label Text="Full Name"
-                   FontSize="Medium" />
-            <Entry Placeholder="Full Name"
-                   x:Name="TxtFullName">
-            </Entry>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Full Name"
+                           FontSize="Medium" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           FontSize="Medium" />
+                </Grid>
+                <Entry Placeholder="Full Name"
+                       x:Name="TxtFullName">
+                </Entry>
 
-            <Label Text="Email"
-                   FontSize="Medium" />
-            <Entry Placeholder="Email"
-                   x:Name="TxtEmail">
-            </Entry>
+                <Label Text="Email"
+                       FontSize="Medium" />
+                <Entry Placeholder="Email"
+                       x:Name="TxtEmail">
+                </Entry>
 
-            <Label Text="Type of user"
-                   FontSize="Medium" />
-            <Picker Title="Type of user"
-                    x:Name="pickerUserType">
-                <Picker.Items>
-                    <x:String>Normal User/patient</x:String>
-                    <x:String>Family member/caretaker</x:String>
-                </Picker.Items>
-            </Picker>
-            <!--<Entry Placeholder="Gender"
-                   x:Name="TxtGender">
-            </Entry>
-            <Entry Placeholder="Birth Date"
-                   x:Name="TxtBirthDate">
-            </Entry>-->
+                <Label Text="Type of user"
+                       FontSize="Medium" />
+                <Picker Title="Type of user"
+                        x:Name="pickerUserType">
+                    <Picker.Items>
+                        <x:String>Normal User/patient</x:String>
+                        <x:String>Family member/caretaker</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Gender"
+                       FontSize="Medium" />
+                <Picker Title="Gender"
+                        x:Name="pickerGender">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                        <x:String>Non-Binary</x:String>
+                    </Picker.Items>
+                </Picker>
 
-            <Label Text="Password"
-                   FontSize="Medium" />
-            <Entry Placeholder="Password"
-                   x:Name="TxtPassword"
-                   IsPassword="True">
-            </Entry>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <Label Text="Birth Date"
+                       FontSize="Medium" />
+                <DatePicker x:Name="TxtBirthDate"
+                            Format="dd/MM/yyyy" />
 
-                <Button Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Cancel"
-                        x:Name="ButtonCancel"
-                        CornerRadius="15"
-                        Clicked="ButtonCancel_Clicked" />
+                <Label Text="Password"
+                       FontSize="Medium" />
+                <Entry Placeholder="Password"
+                       x:Name="TxtPassword"
+                       IsPassword="True">
+                </Entry>
+            </StackLayout>
+            <StackLayout VerticalOptions="End"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Text="Register"
-                        x:Name="ButtonRegister"
-                        Clicked="ButtonRegister_Clicked"
-                        BackgroundColor="#3478E8"
-                        TextColor="White"
-                        CornerRadius="15" />
-            </Grid>
-        </StackLayout>
+                    <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Cancel"
+                            x:Name="ButtonCancel"
+                            CornerRadius="15"
+                            Clicked="ButtonCancel_Clicked" />
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Register"
+                            x:Name="ButtonRegister"
+                            Clicked="ButtonRegister_Clicked"
+                            BackgroundColor="#3478E8"
+                            TextColor="White"
+                            CornerRadius="15" />
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

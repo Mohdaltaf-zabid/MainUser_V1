@@ -1,6 +1,7 @@
 ﻿using MainUser.Views;
 using MainUser.Views.Reminder;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,8 @@ namespace MainUser
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+            Preferences.Remove("loop");
+            MainPage = new TabbedPageUser();
         }
 
         protected override void OnStart()

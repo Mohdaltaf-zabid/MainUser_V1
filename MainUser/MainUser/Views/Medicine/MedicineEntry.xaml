@@ -4,123 +4,151 @@
              x:Class="MainUser.Views.Medicine.MedicineEntry"
              Title="Add Medicine">
     <ContentPage.Content>
-        <StackLayout Padding="15"
-                     VerticalOptions="CenterAndExpand">
-            <!--<Label Text="Add Medicine"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center" />-->
+        <RelativeLayout>
+            <StackLayout Padding="15"
+                         VerticalOptions="Start">
+                <Label Text="Medicine Entry"
+                       FontSize="Title"
+                       TextColor="#3478E8"
+                       Margin="0, 0, 0, 20"/>
 
-            <Image x:Name="medicineImage"
-                   HeightRequest="100"
-                   Source="cameraIcon.png">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="cameraIcon"
-                                          Tapped="cameraIcon_Tapped" />
-                </Image.GestureRecognizers>
-            </Image>
-            <!--<Image x:Name="medicineImage"
+                <Image x:Name="medicineImage"
+                       HeightRequest="100"
+                       Source="cameraIcon.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="cameraIcon"
+                                              Tapped="cameraIcon_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <!--<Image x:Name="medicineImage"
                    HeightRequest="150" />-->
 
-            <Label Text="Medicine Name" />
-            <Entry x:Name="TxtMedName"
-                   Placeholder="Medicine Name" />
+                <Label Text="Medicine Name" />
+                <Entry x:Name="TxtMedName"
+                       Placeholder="Medicine Name" />
 
-            <Label Text="Strength/Unit" />
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <Label Text="Strength/Unit" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Entry Grid.Row="0"
-                       Grid.Column="0"
-                       x:Name="TxtStrength"
-                       Placeholder="Strength"
-                       Keyboard="Numeric"/>
-                <Picker Grid.Row="0"
-                        Grid.Column="1"
-                        Title="Unit"
-                        x:Name="pickerUnit">
-                    <Picker.Items>
-                        <x:String>g</x:String>
-                        <x:String>IU</x:String>
-                        <x:String>mcg</x:String>
-                        <x:String>mcg/hr</x:String>
-                        <x:String>mcg/ml</x:String>
-                        <x:String>mEq</x:String>
-                        <x:String>mg</x:String>
-                        <x:String>mg/cm2</x:String>
-                        <x:String>mg/g</x:String>
-                        <x:String>mcg/ml</x:String>
-                        <x:String>mL</x:String>
-                        <x:String>%</x:String>
-                    </Picker.Items>
-                </Picker>
-            </Grid>
-            <!--<Entry x:Name="TxtStrengthUnit"
+                    <Entry Grid.Row="0"
+                           Grid.Column="0"
+                           x:Name="TxtStrength"
+                           Placeholder="Strength"
+                           Keyboard="Numeric" />
+                    <Picker Grid.Row="0"
+                            Grid.Column="1"
+                            Title="Unit"
+                            x:Name="pickerUnit">
+                        <Picker.Items>
+                            <x:String>g</x:String>
+                            <x:String>IU</x:String>
+                            <x:String>mcg</x:String>
+                            <x:String>mcg/hr</x:String>
+                            <x:String>mcg/ml</x:String>
+                            <x:String>mEq</x:String>
+                            <x:String>mg</x:String>
+                            <x:String>mg/cm2</x:String>
+                            <x:String>mg/g</x:String>
+                            <x:String>mcg/ml</x:String>
+                            <x:String>mL</x:String>
+                            <x:String>%</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+                <!--<Entry x:Name="TxtStrengthUnit"
                    Placeholder="Strength/Unit"
                    Focused="TxtStrengthUnit_Focused" />-->
 
-            <!--<Label Text="Dose/Time" />
+                <!--<Label Text="Dose/Time" />
             <Entry x:Name="TxtDoseTime"
                    Placeholder="Dose/Time"
                    Focused="TxtDoseTime_Focused" />-->
-            <!--<Label Text="Dose/Time"
+                <!--<Label Text="Dose/Time"
                    VerticalOptions="Center"
                    HorizontalOptions="Center" />-->
 
-            <Label Text="Frequency" />
-            <Picker Title="Frequency"
-                    x:Name="pickerFrequency"
-                    SelectedIndexChanged="pickerFrequency_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>As Needed</x:String>
-                    <x:String>Daily</x:String>
-                </Picker.Items>
-            </Picker>
+                <Label Text="Frequency" />
+                <Picker Title="Frequency"
+                        x:Name="pickerFrequency"
+                        SelectedIndexChanged="pickerFrequency_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>As Needed</x:String>
+                        <x:String>Daily</x:String>
+                    </Picker.Items>
+                </Picker>
 
-            <Label x:Name="lblTimeADay"
-                   Text="How many times a day"
-                   IsVisible="False" />
-            <Picker Title="How many times a day"
-                    x:Name="pickerTimeADay"
-                    IsVisible="False">
-                <Picker.Items>
-                    <x:String>1</x:String>
-                    <x:String>2</x:String>
-                    <x:String>3</x:String>
-                    <x:String>4</x:String>
-                    <x:String>5</x:String>
-                    <x:String>6</x:String>
-                </Picker.Items>
-            </Picker>
+                <Label x:Name="lblTimeADay"
+                       Text="How many times a day"
+                       IsVisible="False" />
+                <Picker Title="How many times a day"
+                        x:Name="pickerTimeADay"
+                        IsVisible="False">
+                    <Picker.Items>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                    </Picker.Items>
+                </Picker>
 
-            <Label x:Name="lblTimeAndDose"
-                   Text="Set dose"
-                   IsVisible="False"
-                   VerticalOptions="Start"
-                   HorizontalOptions="Start" />
+                <Label x:Name="lblTimeAndDose"
+                       Text="Set dose"
+                       IsVisible="False"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start" />
 
-            <Entry x:Name="TxtDose"
-                   Placeholder="Dose"
-                   Keyboard="Numeric"
-                   IsVisible="False"/>
+                <Entry x:Name="TxtDose"
+                       Placeholder="Dose"
+                       Keyboard="Numeric"
+                       IsVisible="False" />
 
-            <Label Text="Start Date" />
-            <DatePicker x:Name="TxtStartdate"
-                        Format="D" />
-            <Label Text="End Date" />
-            <DatePicker x:Name="TxtEnddate"
-                        Format="D"
-                        BindingContext="{x:Reference TxtStartdate}"
-                        MinimumDate="{Binding Date}" />
+                <Label Text="Start Date" />
+                <DatePicker x:Name="TxtStartdate"
+                            Format="D" />
+                <Label Text="End Date" />
+                <DatePicker x:Name="TxtEnddate"
+                            Format="D"
+                            BindingContext="{x:Reference TxtStartdate}"
+                            MinimumDate="{Binding Date}" />
 
-            <Button Text="Next"
-                    x:Name="ButtonSaveMed"
-                    CornerRadius="15"
-                    Clicked="ButtonSaveMed_Clicked" />
-        </StackLayout>
+            </StackLayout>
+            <StackLayout VerticalOptions="End"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Cancel"
+                            x:Name="ButtonCancel"
+                            CornerRadius="15"
+                            Clicked="ButtonCancel_Clicked" />
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Save"
+                            x:Name="ButtonSaveMed"
+                            CornerRadius="15"
+                            Clicked="ButtonSaveMed_Clicked"
+                            BackgroundColor="#3478E8"
+                            TextColor="White" />
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,7 +6,8 @@
              NavigationPage.HasBackButton="False">
     <StackLayout Padding="15"
                  VerticalOptions="Start">
-        <StackLayout  Orientation="Horizontal">
+        <StackLayout  Orientation="Horizontal"
+                      Margin="0, 0, 0, 20">
             <Label Text="Medicine List"
                    FontSize="Title"
                    TextColor="#3478E8" />
@@ -58,6 +59,9 @@
                                     <StackLayout Orientation="Horizontal"
                                                  Padding="15">
                                         <Image Source="{Binding Image}"
+                                               Aspect="AspectFit"
+                                               WidthRequest="100"
+                                               HeightRequest="100"
                                                Margin="0, 10, 10, 10"/>
                                         <StackLayout HorizontalOptions="StartAndExpand">
                                             <Label Text="{Binding med_Name}"

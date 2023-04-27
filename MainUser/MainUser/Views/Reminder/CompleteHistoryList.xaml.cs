@@ -26,7 +26,15 @@ namespace MainUser.Views.Reminder
         {
             var reminder = await reminderRepository.Getcompleted();
             CompleteReminderListView.ItemsSource = null;
-            CompleteReminderListView.ItemsSource = reminder;
+            if (reminder.Count != 0)
+            {
+                lblNoRecord.IsVisible = false;
+                CompleteReminderListView.ItemsSource = reminder;
+            }
+            else
+            {
+                lblNoRecord.IsVisible = true;
+            }
             CompleteReminderListView.IsRefreshing = false;
         }
 

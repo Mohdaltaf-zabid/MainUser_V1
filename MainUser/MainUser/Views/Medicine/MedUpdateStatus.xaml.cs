@@ -64,7 +64,7 @@ namespace MainUser.Views.Medicine
                 if (isDelete)
                 {
                     await DisplayAlert("Information", "Medicine has been Deleted", "Ok");
-                    await Navigation.PopAsync();
+                    await Navigation.PopModalAsync();
                 }
                 else
                 {
@@ -109,7 +109,7 @@ namespace MainUser.Views.Medicine
             if (isUpdated)
             {
                 await DisplayAlert("Information", "Medicine has been Updated", "Ok");
-                await Navigation.PopAsync();
+                await Navigation.PopModalAsync();
             }
             else
             {
@@ -119,7 +119,7 @@ namespace MainUser.Views.Medicine
 
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
 
         private async void process(string status)
@@ -151,7 +151,7 @@ namespace MainUser.Views.Medicine
             if (isUpdated)
             {
                 await DisplayAlert("Information", "Medicine has been Updated", "Ok");
-                await Navigation.PopAsync();
+                await Navigation.PopModalAsync();
             }
             else
             {

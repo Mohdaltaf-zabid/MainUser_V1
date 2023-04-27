@@ -15,6 +15,7 @@ namespace MainUser.Views
         public TabPage()
         {
             InitializeComponent();
+            var pages = new TabbedPage();   
         }
     }
 }

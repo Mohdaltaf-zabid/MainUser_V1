@@ -4,113 +4,120 @@
              x:Class="MainUser.Views.Medicine.MedUpdateStatus"
              Title="Update Status Medicine">
     <ContentPage.Content>
-        <StackLayout Padding="25"
-                     VerticalOptions="CenterAndExpand">
-            <Label x:Name="lblNameMed"
-                   FontSize="Large"
-                   HorizontalOptions="Center" />
-            <Label x:Name="lblStrengthMed"
-                   FontSize="Large"
-                   HorizontalOptions="Center" />
-            <Label x:Name="lblStatusMed"
-                   FontSize="Large"
-                   HorizontalOptions="Center" />
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <RelativeLayout>
+            <StackLayout VerticalOptions="Center"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}">
+                <Label x:Name="lblNameMed"
+                       FontSize="Large"
+                       HorizontalOptions="Center" />
+                <Label x:Name="lblStrengthMed"
+                       FontSize="Large"
+                       HorizontalOptions="Center" />
+                <Label x:Name="lblStatusMed"
+                       FontSize="Large"
+                       HorizontalOptions="Center" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <ImageButton Grid.Row="0"
-                             Grid.Column="0"
-                             x:Name="btnSkip"
-                             Source="skip.png"
-                             BackgroundColor="White"
-                             HorizontalOptions="Center"
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             CornerRadius="30"
-                             Aspect="AspectFill"
-                             Clicked="btnSkip_Clicked" />
-                <Label Grid.Row="1"
-                       Grid.Column="0"
-                       Text="Skip"
-                       FontSize="Medium"
-                       HorizontalOptions="Center" />
-                <ImageButton Grid.Row="0"
-                             Grid.Column="1"
-                             x:Name="btnDone"
-                             Source="done.png"
-                             BackgroundColor="White"
-                             HorizontalOptions="Center"
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             CornerRadius="30"
-                             Aspect="AspectFill"
-                             Clicked="btnDone_Clicked" />
-                <Label Grid.Row="1"
-                       Grid.Column="1"
-                       Text="Take"
-                       FontSize="Medium"
-                       HorizontalOptions="Center" />
-                <ImageButton Grid.Row="0"
-                             Grid.Column="2"
-                             x:Name="btnDelete"
-                             Source="delete.png"
-                             BackgroundColor="White"
-                             HorizontalOptions="Center"
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             CornerRadius="30"
-                             Aspect="AspectFill"
-                             Clicked="btnDelete_Clicked" />
-                <Label Grid.Row="1"
-                       Grid.Column="2"
-                       Text="Delete"
-                       FontSize="Medium"
-                       HorizontalOptions="Center" />
-                <!--<ImageButton Source="XamarinLogo.png"
+                    <ImageButton Grid.Row="0"
+                                 Grid.Column="0"
+                                 x:Name="btnSkip"
+                                 Source="skip.png"
+                                 BackgroundColor="White"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 CornerRadius="30"
+                                 Aspect="AspectFill"
+                                 Clicked="btnSkip_Clicked" />
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Skip"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                    <ImageButton Grid.Row="0"
+                                 Grid.Column="1"
+                                 x:Name="btnDone"
+                                 Source="done.png"
+                                 BackgroundColor="White"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 CornerRadius="30"
+                                 Aspect="AspectFill"
+                                 Clicked="btnDone_Clicked" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="Take"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                    <ImageButton Grid.Row="0"
+                                 Grid.Column="2"
+                                 x:Name="btnDelete"
+                                 Source="delete.png"
+                                 BackgroundColor="White"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 CornerRadius="30"
+                                 Aspect="AspectFill"
+                                 Clicked="btnDelete_Clicked" />
+                    <Label Grid.Row="1"
+                           Grid.Column="2"
+                           Text="Delete"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                    <!--<ImageButton Source="XamarinLogo.png"
                              HorizontalOptions="Center"
                              VerticalOptions="CenterAndExpand"
                              Clicked="OnImageButtonClicked" />-->
 
-            </Grid>
-            <Label Text="Remark"
-                   FontSize="Medium" />
-            <StackLayout Padding="5,10">
-                <Editor x:Name="TxtRemark" />
+                </Grid>
+                <Label Text="Remark"
+                       FontSize="Medium" />
+                <StackLayout Padding="5,10">
+                    <Editor x:Name="TxtRemark" />
+                </StackLayout>
             </StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+            <StackLayout VerticalOptions="End"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Cancel"
-                        x:Name="ButtonCancel"
-                        CornerRadius="15"
-                        Clicked="ButtonCancel_Clicked" />
+                    <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Cancel"
+                            x:Name="ButtonCancel"
+                            CornerRadius="15"
+                            Clicked="ButtonCancel_Clicked" />
 
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Text="Update"
-                        x:Name="ButtonUpdate"
-                        CornerRadius="15"
-                        BackgroundColor="#3478E8"
-                        TextColor="White"
-                        Clicked="ButtonUpdate_Clicked" />
-            </Grid>
-        </StackLayout>
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Update"
+                            x:Name="ButtonUpdate"
+                            CornerRadius="15"
+                            BackgroundColor="#3478E8"
+                            TextColor="White"
+                            Clicked="ButtonUpdate_Clicked" />
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

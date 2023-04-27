@@ -1,8 +1,10 @@
 ﻿using Firebase.Auth;
 using Firebase.Database;
+using Firebase.Storage;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace MainUser
     public class UserTypeRepository
     {
         FirebaseClient firebaseClient = new FirebaseClient("https://alzheimerapp-4f12d-default-rtdb.firebaseio.com");
+        FirebaseStorage firebaseStorage = new FirebaseStorage("alzheimerapp-4f12d.appspot.com");
 
         public async Task<bool> Save(UserTypeModel userTypeModel)
         {
@@ -43,6 +46,11 @@ namespace MainUser
                 userType = item.Object.userType,
                 fullName = item.Object.fullName,
                 status = item.Object.status,
+                caretakerEmail = item.Object.caretakerEmail,
+                caretakerName = item.Object.caretakerName,
+                gender = item.Object.gender,
+                birthdate = item.Object.birthdate,
+                profileImage = item.Object.profileImage,
                 ID = item.Key
             }).ToList();
         }
@@ -57,6 +65,10 @@ namespace MainUser
                 fullName = item.Object.fullName,
                 status = item.Object.status,
                 caretakerEmail = item.Object.caretakerEmail,
+                caretakerName = item.Object.caretakerName,
+                gender = item.Object.gender,
+                birthdate = item.Object.birthdate,
+                profileImage = item.Object.profileImage,
                 ID = item.Key
             }).Where(a => a.userType == "Normal User/patient").
             Where(a => a.status != "Approved").ToList();
@@ -72,6 +84,10 @@ namespace MainUser
                 fullName = item.Object.fullName,
                 status = item.Object.status,
                 caretakerEmail = item.Object.caretakerEmail,
+                caretakerName = item.Object.caretakerName,
+                gender = item.Object.gender,
+                birthdate = item.Object.birthdate,
+                profileImage = item.Object.profileImage,
                 ID = item.Key
             }).Where(a => a.userType == "Normal User/patient")
             .Where(a => a.caretakerEmail == UserEmail)
@@ -89,6 +105,9 @@ namespace MainUser
                 status = item.Object.status,
                 caretakerEmail = item.Object.caretakerEmail,
                 caretakerName = item.Object.caretakerName,
+                gender = item.Object.gender,
+                birthdate = item.Object.birthdate,
+                profileImage = item.Object.profileImage,
                 ID = item.Key
             }).Where(a => a.userType == "Normal User/patient")
             .Where(a => a.email == UserEmail)
@@ -118,6 +137,18 @@ namespace MainUser
         {
             await firebaseClient.Child(nameof(UserTypeModel) + "/" + userTypeModel.ID).PutAsync(JsonConvert.SerializeObject(userTypeModel));
             return true;
+        }
+
+        public async Task<bool> Update(UserTypeModel userTypeModel)
+        {
+            await firebaseClient.Child(nameof(UserTypeModel) + "/" + userTypeModel.ID).PutAsync(JsonConvert.SerializeObject(userTypeModel));
+            return true;
+        }
+
+        public async Task<string> upload(Stream img, string filename)
+        {
+            var image = await firebaseStorage.Child("Images").Child(filename).PutAsync(img);
+            return image;
         }
     }
 }
